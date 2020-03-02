@@ -41,6 +41,7 @@ Class | Method | HTTP request | Description
 *AnalyticsDataGoalsAPI* | [**getAnalyticsGoalReportPerSourceMediumPerDay**](docs/AnalyticsDataGoalsAPI.md#getanalyticsgoalreportpersourcemediumperday) | **GET** /data/analytics-goal-report-per-source-medium-per-day/{organisationUuid} | Return analytics goal report per source medium per day by organisation
 *CampaignGroupAPI* | [**getCampaignGroupAdReportPerOrganisationPerDay**](docs/CampaignGroupAPI.md#getcampaigngroupadreportperorganisationperday) | **GET** /data/campaign-group-ad-report-per-organisation-per-day/{organisationUuids} | Return campaign group ad report per organisation per day
 *CampaignGroupAPI* | [**getCampaignGroupAnalyticsReportPerOrganisationPerDay**](docs/CampaignGroupAPI.md#getcampaigngroupanalyticsreportperorganisationperday) | **GET** /data/campaign-group-analytics-report-per-organisation-per-day/{organisationUuids} | Return campaign group analytics report per organisation per day
+*CampaignGroupAPI* | [**getCampaignGroupReportPerOrganisationPerDay**](docs/CampaignGroupAPI.md#getcampaigngroupreportperorganisationperday) | **GET** /data/campaign-group-report-per-organisation-per-day/{organisationUuids} | Return campaign group report per organisation per day
 *GenericDataAPI* | [**getCampaignGroups**](docs/GenericDataAPI.md#getcampaigngroups) | **GET** /data/campaign-groups | Return campaign groups
 *GenericDataAPI* | [**getOrganisations**](docs/GenericDataAPI.md#getorganisations) | **GET** /data/organisations | Return organisations
 
