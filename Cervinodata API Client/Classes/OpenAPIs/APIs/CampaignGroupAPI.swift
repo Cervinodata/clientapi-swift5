@@ -13,6 +13,76 @@ open class CampaignGroupAPI {
     /**
      * enum for parameter dateFormat
      */
+    public enum DateFormat_getCampaignGroupAdReportPerOrganisationPerCampaignPerDay: String, CaseIterable {
+        case yyyyMmDd = "YYYY-MM-DD"
+        case yyyymmdd = "YYYYMMDD"
+    }
+
+    /**
+     * enum for parameter format
+     */
+    public enum Format_getCampaignGroupAdReportPerOrganisationPerCampaignPerDay: String, CaseIterable {
+        case csv = "csv"
+        case json = "json"
+    }
+
+    /**
+     Return campaign group ad report per organisation per campaign per day
+     
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getCampaignGroupAdReportPerOrganisationPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupAdReportPerOrganisationPerCampaignPerDay? = nil, format: Format_getCampaignGroupAdReportPerOrganisationPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+        getCampaignGroupAdReportPerOrganisationPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result -> Void in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Return campaign group ad report per organisation per campaign per day
+     - GET /data/campaign-group-ad-report-per-organisation-per-campaign-per-day/{organisationUuids}
+     - Campaign group ad report per organisation per campaign per day
+     - BASIC:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - returns: RequestBuilder<String> 
+     */
+    open class func getCampaignGroupAdReportPerOrganisationPerCampaignPerDayWithRequestBuilder(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupAdReportPerOrganisationPerCampaignPerDay? = nil, format: Format_getCampaignGroupAdReportPerOrganisationPerCampaignPerDay? = nil) -> RequestBuilder<String> {
+        var path = "/data/campaign-group-ad-report-per-organisation-per-campaign-per-day/{organisationUuids}"
+        let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
+        let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
+        let URLString = Cervinodata API ClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(), 
+            "date_format": dateFormat?.encodeToJSON(), 
+            "format": format?.encodeToJSON()
+        ])
+
+        let requestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     * enum for parameter dateFormat
+     */
     public enum DateFormat_getCampaignGroupAdReportPerOrganisationPerDay: String, CaseIterable {
         case yyyyMmDd = "YYYY-MM-DD"
         case yyyymmdd = "YYYYMMDD"
@@ -153,6 +223,76 @@ open class CampaignGroupAPI {
     /**
      * enum for parameter dateFormat
      */
+    public enum DateFormat_getCampaignGroupFacebookAdReportPerOrganisationPerCampaignPerDay: String, CaseIterable {
+        case yyyyMmDd = "YYYY-MM-DD"
+        case yyyymmdd = "YYYYMMDD"
+    }
+
+    /**
+     * enum for parameter format
+     */
+    public enum Format_getCampaignGroupFacebookAdReportPerOrganisationPerCampaignPerDay: String, CaseIterable {
+        case csv = "csv"
+        case json = "json"
+    }
+
+    /**
+     Return campaign group facebook ad report per organisation per campaign per day
+     
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getCampaignGroupFacebookAdReportPerOrganisationPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupFacebookAdReportPerOrganisationPerCampaignPerDay? = nil, format: Format_getCampaignGroupFacebookAdReportPerOrganisationPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+        getCampaignGroupFacebookAdReportPerOrganisationPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result -> Void in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Return campaign group facebook ad report per organisation per campaign per day
+     - GET /data/campaign-group-facebook-ad-report-per-organisation-per-campaign-per-day/{organisationUuids}
+     - Campaign group facebook ad report per organisation  per campaign per day
+     - BASIC:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - returns: RequestBuilder<String> 
+     */
+    open class func getCampaignGroupFacebookAdReportPerOrganisationPerCampaignPerDayWithRequestBuilder(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupFacebookAdReportPerOrganisationPerCampaignPerDay? = nil, format: Format_getCampaignGroupFacebookAdReportPerOrganisationPerCampaignPerDay? = nil) -> RequestBuilder<String> {
+        var path = "/data/campaign-group-facebook-ad-report-per-organisation-per-campaign-per-day/{organisationUuids}"
+        let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
+        let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
+        let URLString = Cervinodata API ClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(), 
+            "date_format": dateFormat?.encodeToJSON(), 
+            "format": format?.encodeToJSON()
+        ])
+
+        let requestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     * enum for parameter dateFormat
+     */
     public enum DateFormat_getCampaignGroupReportPerOrganisationPerDay: String, CaseIterable {
         case yyyyMmDd = "YYYY-MM-DD"
         case yyyymmdd = "YYYYMMDD"
@@ -202,6 +342,76 @@ open class CampaignGroupAPI {
      */
     open class func getCampaignGroupReportPerOrganisationPerDayWithRequestBuilder(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupReportPerOrganisationPerDay? = nil, format: Format_getCampaignGroupReportPerOrganisationPerDay? = nil) -> RequestBuilder<String> {
         var path = "/data/campaign-group-report-per-organisation-per-day/{organisationUuids}"
+        let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
+        let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
+        let URLString = Cervinodata API ClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(), 
+            "date_format": dateFormat?.encodeToJSON(), 
+            "format": format?.encodeToJSON()
+        ])
+
+        let requestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     * enum for parameter dateFormat
+     */
+    public enum DateFormat_getCampaignGroupVideoReportPerOrganisationPerDay: String, CaseIterable {
+        case yyyyMmDd = "YYYY-MM-DD"
+        case yyyymmdd = "YYYYMMDD"
+    }
+
+    /**
+     * enum for parameter format
+     */
+    public enum Format_getCampaignGroupVideoReportPerOrganisationPerDay: String, CaseIterable {
+        case csv = "csv"
+        case json = "json"
+    }
+
+    /**
+     Return campaign group video report per organisation per day
+     
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getCampaignGroupVideoReportPerOrganisationPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupVideoReportPerOrganisationPerDay? = nil, format: Format_getCampaignGroupVideoReportPerOrganisationPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+        getCampaignGroupVideoReportPerOrganisationPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result -> Void in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Return campaign group video report per organisation per day
+     - GET /data/campaign-group-video-report-per-organisation-per-day/{organisationUuids}
+     - Campaign group video report per organisation per day
+     - BASIC:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - returns: RequestBuilder<String> 
+     */
+    open class func getCampaignGroupVideoReportPerOrganisationPerDayWithRequestBuilder(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupVideoReportPerOrganisationPerDay? = nil, format: Format_getCampaignGroupVideoReportPerOrganisationPerDay? = nil) -> RequestBuilder<String> {
+        var path = "/data/campaign-group-video-report-per-organisation-per-day/{organisationUuids}"
         let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
         let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
