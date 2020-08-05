@@ -25,6 +25,7 @@ All URIs are relative to *https://app.cervinodata.com/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AdvertisingDataAPI* | [**getAdAccountReportPerOrganisationPerDay**](docs/AdvertisingDataAPI.md#getadaccountreportperorganisationperday) | **GET** /data/ad-account-report-per-organisation-per-day/{organisationUuids} | Return ad account report per organisation per day
 *AdvertisingDataAPI* | [**getAdAccounts**](docs/AdvertisingDataAPI.md#getadaccounts) | **GET** /data/ad-accounts/{organisationUuid} | Return ad accounts by organisation
 *AdvertisingDataAPI* | [**getAdCampaignReportPerDay**](docs/AdvertisingDataAPI.md#getadcampaignreportperday) | **GET** /data/ad-campaign-report-per-day/{organisationUuid} | Return ad campaign report per day by organisation
 *AdvertisingDataAPI* | [**getAdCampaignReportPerOrganisationPerAccountPerDay**](docs/AdvertisingDataAPI.md#getadcampaignreportperorganisationperaccountperday) | **GET** /data/ad-campaign-report-per-organisation-per-account-per-day/{organisationUuids} | Return ad campaign report per organisation per account per day
