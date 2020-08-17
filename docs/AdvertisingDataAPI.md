@@ -7,8 +7,11 @@ Method | HTTP request | Description
 [**getAdAccountReportPerOrganisationPerDay**](AdvertisingDataAPI.md#getadaccountreportperorganisationperday) | **GET** /data/ad-account-report-per-organisation-per-day/{organisationUuids} | Return ad account report per organisation per day
 [**getAdAccounts**](AdvertisingDataAPI.md#getadaccounts) | **GET** /data/ad-accounts/{organisationUuid} | Return ad accounts by organisation
 [**getAdCampaignReportPerDay**](AdvertisingDataAPI.md#getadcampaignreportperday) | **GET** /data/ad-campaign-report-per-day/{organisationUuid} | Return ad campaign report per day by organisation
+[**getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDay**](AdvertisingDataAPI.md#getadcampaignreportperorganisationperaccountpercampaignperdeviceperday) | **GET** /data/ad-campaign-report-per-organisation-per-account-per-campaign-per-device-per-day/{organisationUuids} | Return ad campaign report per organisation per account per campaign per device per day
 [**getAdCampaignReportPerOrganisationPerAccountPerDay**](AdvertisingDataAPI.md#getadcampaignreportperorganisationperaccountperday) | **GET** /data/ad-campaign-report-per-organisation-per-account-per-day/{organisationUuids} | Return ad campaign report per organisation per account per day
 [**getAdCampaigns**](AdvertisingDataAPI.md#getadcampaigns) | **GET** /data/ad-campaigns/{organisationUuid} | Return ad campaigns by organisation
+[**getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDay**](AdvertisingDataAPI.md#getfacebookadextendedreportperorganisationperaccountpercampaignperdeviceperday) | **GET** /data/facebook-ad-extended-report-per-organisation-per-account-per-campaign-per-device-per-day/{organisationUuids} | Return facebook ad extended report per organisation per account per campaign per device per day
+[**getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDay**](AdvertisingDataAPI.md#getgoogleadsreportperorganisationperaccountpercampaignperdeviceperday) | **GET** /data/google-ads-report-per-organisation-per-account-per-campaign-per-device-per-day/{organisationUuids} | Return google ads report per organisation per account per campaign per device per day
 
 
 # **getAdAccountReportPerOrganisationPerDay**
@@ -175,6 +178,62 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDay**
+```swift
+    open class func getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, format: Format_getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+```
+
+Return ad campaign report per organisation per account per campaign per device per day
+
+Ad campaign report per organisation per account per campaign per device per day
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cervinodata API Client
+
+let organisationUuids = ["inner_example"] // [String] | Organisation uuids
+let fromDate = Date() // Date | From date (optional)
+let dateFormat = "dateFormat_example" // String | Outputted date format (optional)
+let format = "format_example" // String | Output format (use csv for large result sets) (optional)
+
+// Return ad campaign report per organisation per account per campaign per device per day
+AdvertisingDataAPI.getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organisationUuids** | [**[String]**](String.md) | Organisation uuids | 
+ **fromDate** | **Date** | From date | [optional] 
+ **dateFormat** | **String** | Outputted date format | [optional] 
+ **format** | **String** | Output format (use csv for large result sets) | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/csv, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getAdCampaignReportPerOrganisationPerAccountPerDay**
 ```swift
     open class func getAdCampaignReportPerOrganisationPerAccountPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdCampaignReportPerOrganisationPerAccountPerDay? = nil, format: Format_getAdCampaignReportPerOrganisationPerAccountPerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
@@ -269,6 +328,118 @@ Name | Type | Description  | Notes
  **organisationUuid** | **String** | Organisation uuid | 
  **fromDate** | **Date** | From date | [optional] 
  **format** | **String** | Output format | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/csv, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDay**
+```swift
+    open class func getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, format: Format_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+```
+
+Return facebook ad extended report per organisation per account per campaign per device per day
+
+Facebook ad extended report per organisation per account per campaign per device per day
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cervinodata API Client
+
+let organisationUuids = ["inner_example"] // [String] | Organisation uuids
+let fromDate = Date() // Date | From date (optional)
+let dateFormat = "dateFormat_example" // String | Outputted date format (optional)
+let format = "format_example" // String | Output format (use csv for large result sets) (optional)
+
+// Return facebook ad extended report per organisation per account per campaign per device per day
+AdvertisingDataAPI.getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organisationUuids** | [**[String]**](String.md) | Organisation uuids | 
+ **fromDate** | **Date** | From date | [optional] 
+ **dateFormat** | **String** | Outputted date format | [optional] 
+ **format** | **String** | Output format (use csv for large result sets) | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/csv, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDay**
+```swift
+    open class func getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, format: Format_getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+```
+
+Return google ads report per organisation per account per campaign per device per day
+
+Campaign group google ads report per organisation per account per campaign per device per day
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cervinodata API Client
+
+let organisationUuids = ["inner_example"] // [String] | Organisation uuids
+let fromDate = Date() // Date | From date (optional)
+let dateFormat = "dateFormat_example" // String | Outputted date format (optional)
+let format = "format_example" // String | Output format (use csv for large result sets) (optional)
+
+// Return google ads report per organisation per account per campaign per device per day
+AdvertisingDataAPI.getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organisationUuids** | [**[String]**](String.md) | Organisation uuids | 
+ **fromDate** | **Date** | From date | [optional] 
+ **dateFormat** | **String** | Outputted date format | [optional] 
+ **format** | **String** | Output format (use csv for large result sets) | [optional] 
 
 ### Return type
 
