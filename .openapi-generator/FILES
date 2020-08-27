@@ -1,0 +1,30 @@
+.gitignore
+Cartfile
+Cervinodata API Client.podspec
+Cervinodata API Client/Classes/OpenAPIs/APIHelper.swift
+Cervinodata API Client/Classes/OpenAPIs/APIs.swift
+Cervinodata API Client/Classes/OpenAPIs/APIs/AdvertisingDataAPI.swift
+Cervinodata API Client/Classes/OpenAPIs/APIs/AnalyticsDataAPI.swift
+Cervinodata API Client/Classes/OpenAPIs/APIs/AnalyticsDataDefaultMetricsAPI.swift
+Cervinodata API Client/Classes/OpenAPIs/APIs/AnalyticsDataGoalsAPI.swift
+Cervinodata API Client/Classes/OpenAPIs/APIs/CampaignGroupAPI.swift
+Cervinodata API Client/Classes/OpenAPIs/APIs/GenericDataAPI.swift
+Cervinodata API Client/Classes/OpenAPIs/CodableHelper.swift
+Cervinodata API Client/Classes/OpenAPIs/Configuration.swift
+Cervinodata API Client/Classes/OpenAPIs/Extensions.swift
+Cervinodata API Client/Classes/OpenAPIs/JSONDataEncoding.swift
+Cervinodata API Client/Classes/OpenAPIs/JSONEncodingHelper.swift
+Cervinodata API Client/Classes/OpenAPIs/Models.swift
+Cervinodata API Client/Classes/OpenAPIs/OpenISO8601DateFormatter.swift
+Cervinodata API Client/Classes/OpenAPIs/SynchronizedDictionary.swift
+Cervinodata API Client/Classes/OpenAPIs/URLSessionImplementations.swift
+Package.swift
+README.md
+docs/AdvertisingDataAPI.md
+docs/AnalyticsDataAPI.md
+docs/AnalyticsDataDefaultMetricsAPI.md
+docs/AnalyticsDataGoalsAPI.md
+docs/CampaignGroupAPI.md
+docs/GenericDataAPI.md
+git_push.sh
+project.yml
