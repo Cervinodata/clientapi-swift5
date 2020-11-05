@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **getCampaignGroups**
 ```swift
-    open class func getCampaignGroups(completion: @escaping (_ data: [AnyType]?, _ error: Error?) -> Void)
+    open class func getCampaignGroups(completion: @escaping (_ data: [Any]?, _ error: Error?) -> Void)
 ```
 
 Return campaign groups
@@ -41,7 +41,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[AnyType]**](AnyType.md)
+**[Any]**
 
 ### Authorization
 

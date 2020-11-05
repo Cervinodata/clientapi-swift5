@@ -16,7 +16,7 @@ open class GenericDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getCampaignGroups(apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AnyType]?,_ error: Error?) -> Void)) {
+    open class func getCampaignGroups(apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [Any]?,_ error: Error?) -> Void)) {
         getCampaignGroupsWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -34,16 +34,16 @@ open class GenericDataAPI {
      - BASIC:
        - type: http
        - name: bearerAuth
-     - returns: RequestBuilder<[AnyType]> 
+     - returns: RequestBuilder<[Any]> 
      */
-    open class func getCampaignGroupsWithRequestBuilder() -> RequestBuilder<[AnyType]> {
+    open class func getCampaignGroupsWithRequestBuilder() -> RequestBuilder<[Any]> {
         let path = "/data/campaign-groups"
         let URLString = Cervinodata API ClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<[AnyType]>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[Any]>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

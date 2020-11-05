@@ -755,4 +755,144 @@ open class AdvertisingDataAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
 
+    /**
+     * enum for parameter dateFormat
+     */
+    public enum DateFormat_getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay: String, CaseIterable {
+        case yyyyMmDd = "YYYY-MM-DD"
+        case yyyymmdd = "YYYYMMDD"
+    }
+
+    /**
+     * enum for parameter format
+     */
+    public enum Format_getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay: String, CaseIterable {
+        case csv = "csv"
+        case json = "json"
+    }
+
+    /**
+     Return snapchat ads extended report per organisation per account per campaign per day
+     
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+        getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result -> Void in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Return snapchat ads extended report per organisation per account per campaign per day
+     - GET /data/snapchat-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}
+     - Snapchat ads extended report per organisation per account per campaign per day
+     - BASIC:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - returns: RequestBuilder<String> 
+     */
+    open class func getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil) -> RequestBuilder<String> {
+        var path = "/data/snapchat-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}"
+        let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
+        let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
+        let URLString = Cervinodata API ClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(), 
+            "date_format": dateFormat?.encodeToJSON(), 
+            "format": format?.encodeToJSON()
+        ])
+
+        let requestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     * enum for parameter dateFormat
+     */
+    public enum DateFormat_getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay: String, CaseIterable {
+        case yyyyMmDd = "YYYY-MM-DD"
+        case yyyymmdd = "YYYYMMDD"
+    }
+
+    /**
+     * enum for parameter format
+     */
+    public enum Format_getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay: String, CaseIterable {
+        case csv = "csv"
+        case json = "json"
+    }
+
+    /**
+     Return twitter ads extended report per organisation per account per campaign per day
+     
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+        getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result -> Void in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Return twitter ads extended report per organisation per account per campaign per day
+     - GET /data/twitter-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}
+     - Twitter ads extended report per organisation per account per campaign per day
+     - BASIC:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - returns: RequestBuilder<String> 
+     */
+    open class func getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil) -> RequestBuilder<String> {
+        var path = "/data/twitter-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}"
+        let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
+        let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
+        let URLString = Cervinodata API ClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(), 
+            "date_format": dateFormat?.encodeToJSON(), 
+            "format": format?.encodeToJSON()
+        ])
+
+        let requestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
 }
