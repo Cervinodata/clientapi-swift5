@@ -5,6 +5,7 @@ All URIs are relative to *https://app.cervinodata.com/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getCampaignGroupAdReportPerOrganisationPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupadreportperorganisationpercampaignperday) | **GET** /data/campaign-group-ad-report-per-organisation-per-campaign-per-day/{organisationUuids} | Return campaign group ad report per organisation per campaign per day
+[**getCampaignGroupAdReportPerOrganisationPerCampaignPerWeek**](CampaignGroupAPI.md#getcampaigngroupadreportperorganisationpercampaignperweek) | **GET** /data/campaign-group-ad-report-per-organisation-per-campaign-per-week/{organisationUuids} | Return campaign group ad report per organisation per campaign per week
 [**getCampaignGroupAdReportPerOrganisationPerDay**](CampaignGroupAPI.md#getcampaigngroupadreportperorganisationperday) | **GET** /data/campaign-group-ad-report-per-organisation-per-day/{organisationUuids} | Return campaign group ad report per organisation per day
 [**getCampaignGroupAnalyticsReportPerOrganisationPerDay**](CampaignGroupAPI.md#getcampaigngroupanalyticsreportperorganisationperday) | **GET** /data/campaign-group-analytics-report-per-organisation-per-day/{organisationUuids} | Return campaign group analytics report per organisation per day
 [**getCampaignGroupBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupbingadsextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/campaign-group-bing-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return campaign group bing ads extended report per organisation per account per campaign per day
@@ -42,6 +43,62 @@ let format = "format_example" // String | Output format (use csv for large resul
 
 // Return campaign group ad report per organisation per campaign per day
 CampaignGroupAPI.getCampaignGroupAdReportPerOrganisationPerCampaignPerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organisationUuids** | [**[String]**](String.md) | Organisation uuids | 
+ **fromDate** | **Date** | From date | [optional] 
+ **dateFormat** | **String** | Outputted date format | [optional] 
+ **format** | **String** | Output format (use csv for large result sets) | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/csv, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCampaignGroupAdReportPerOrganisationPerCampaignPerWeek**
+```swift
+    open class func getCampaignGroupAdReportPerOrganisationPerCampaignPerWeek(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupAdReportPerOrganisationPerCampaignPerWeek? = nil, format: Format_getCampaignGroupAdReportPerOrganisationPerCampaignPerWeek? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+```
+
+Return campaign group ad report per organisation per campaign per week
+
+Campaign group ad report per organisation per campaign per week
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cervinodata API Client
+
+let organisationUuids = ["inner_example"] // [String] | Organisation uuids
+let fromDate = Date() // Date | From date (optional)
+let dateFormat = "dateFormat_example" // String | Outputted date format (optional)
+let format = "format_example" // String | Output format (use csv for large result sets) (optional)
+
+// Return campaign group ad report per organisation per campaign per week
+CampaignGroupAPI.getCampaignGroupAdReportPerOrganisationPerCampaignPerWeek(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
