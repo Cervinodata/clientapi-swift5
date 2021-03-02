@@ -11,6 +11,8 @@ Method | HTTP request | Description
 [**getCampaignGroupBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupbingadsextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/campaign-group-bing-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return campaign group bing ads extended report per organisation per account per campaign per day
 [**getCampaignGroupDoubleClickBidManagerReportPerOrganisationPerAccountPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupdoubleclickbidmanagerreportperorganisationperaccountpercampaignperday) | **GET** /data/campaign-group-doubleclick-bid-manager-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return campaign group doubleclick bid manager report per organisation per account per campaign per day
 [**getCampaignGroupDoubleClickCampaignManagerReportPerOrganisationPerAccountPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupdoubleclickcampaignmanagerreportperorganisationperaccountpercampaignperday) | **GET** /data/campaign-group-doubleclick-campaign-manager-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return campaign group doubleclick campaign manager report per organisation per account per campaign per day
+[**getCampaignGroupFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupfacebookadcustomconversionreportperorganisationperaccountpercampaignperday) | **GET** /data/campaign-group-facebook-ad-conversion-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return campaign group facebook ad custom conversion report per organisation per account per campaign per day
+[**getCampaignGroupFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay**](CampaignGroupAPI.md#getcampaigngroupfacebookadextendedreportperorganisationperaccountpercampaignperadgroupperday) | **GET** /data/campaign-group-facebook-ad-extended-report-per-organisation-per-account-per-campaign-per-ad-group-per-day/{organisationUuids} | Return campaign group facebook ad extended report per organisation per account per campaign per ad group per day
 [**getCampaignGroupFacebookAdExtendedReportPerOrganisationPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupfacebookadextendedreportperorganisationpercampaignperday) | **GET** /data/campaign-group-facebook-ad-extended-report-per-organisation-per-campaign-per-day/{organisationUuids} | Return campaign group facebook ad extended report per organisation per campaign per day
 [**getCampaignGroupFacebookAdReportPerOrganisationPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupfacebookadreportperorganisationpercampaignperday) | **GET** /data/campaign-group-facebook-ad-report-per-organisation-per-campaign-per-day/{organisationUuids} | Return campaign group facebook ad report per organisation per campaign per day
 [**getCampaignGroupGoogleAdsReportPerOrganisationPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupgoogleadsreportperorganisationpercampaignperday) | **GET** /data/campaign-group-google-ads-report-per-organisation-per-campaign-per-day/{organisationUuids} | Return campaign group google ads report per organisation per campaign per day
@@ -379,6 +381,118 @@ let format = "format_example" // String | Output format (use csv for large resul
 
 // Return campaign group doubleclick campaign manager report per organisation per account per campaign per day
 CampaignGroupAPI.getCampaignGroupDoubleClickCampaignManagerReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organisationUuids** | [**[String]**](String.md) | Organisation uuids | 
+ **fromDate** | **Date** | From date | [optional] 
+ **dateFormat** | **String** | Outputted date format | [optional] 
+ **format** | **String** | Output format (use csv for large result sets) | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/csv, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCampaignGroupFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay**
+```swift
+    open class func getCampaignGroupFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getCampaignGroupFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+```
+
+Return campaign group facebook ad custom conversion report per organisation per account per campaign per day
+
+Campaign group facebook ad custom conversion report per organisation per account per campaign per day
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cervinodata API Client
+
+let organisationUuids = ["inner_example"] // [String] | Organisation uuids
+let fromDate = Date() // Date | From date (optional)
+let dateFormat = "dateFormat_example" // String | Outputted date format (optional)
+let format = "format_example" // String | Output format (use csv for large result sets) (optional)
+
+// Return campaign group facebook ad custom conversion report per organisation per account per campaign per day
+CampaignGroupAPI.getCampaignGroupFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organisationUuids** | [**[String]**](String.md) | Organisation uuids | 
+ **fromDate** | **Date** | From date | [optional] 
+ **dateFormat** | **String** | Outputted date format | [optional] 
+ **format** | **String** | Output format (use csv for large result sets) | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/csv, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCampaignGroupFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay**
+```swift
+    open class func getCampaignGroupFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay? = nil, format: Format_getCampaignGroupFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+```
+
+Return campaign group facebook ad extended report per organisation per account per campaign per ad group per day
+
+Campaign group facebook ad extended report per organisation per account per campaign per ad group per day
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cervinodata API Client
+
+let organisationUuids = ["inner_example"] // [String] | Organisation uuids
+let fromDate = Date() // Date | From date (optional)
+let dateFormat = "dateFormat_example" // String | Outputted date format (optional)
+let format = "format_example" // String | Output format (use csv for large result sets) (optional)
+
+// Return campaign group facebook ad extended report per organisation per account per campaign per ad group per day
+CampaignGroupAPI.getCampaignGroupFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
