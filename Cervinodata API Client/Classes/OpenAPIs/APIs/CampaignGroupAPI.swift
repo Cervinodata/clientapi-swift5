@@ -539,7 +539,7 @@ open class CampaignGroupAPI {
 
     /**
      Return campaign group facebook ad custom conversion report per organisation per account per campaign per day
-     - GET /data/campaign-group-facebook-ad-conversion-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}
+     - GET /data/campaign-group-facebook-ad-custom-conversion-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}
      - Campaign group facebook ad custom conversion report per organisation per account per campaign per day
      - BASIC:
        - type: http
@@ -551,7 +551,7 @@ open class CampaignGroupAPI {
      - returns: RequestBuilder<String> 
      */
     open class func getCampaignGroupFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getCampaignGroupFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay? = nil) -> RequestBuilder<String> {
-        var path = "/data/campaign-group-facebook-ad-conversion-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}"
+        var path = "/data/campaign-group-facebook-ad-custom-conversion-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}"
         let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
         let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
