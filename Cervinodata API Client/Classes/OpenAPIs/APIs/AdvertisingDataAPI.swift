@@ -50,7 +50,7 @@ open class AdvertisingDataAPI {
     /**
      Return ad account report per organisation per day
      - GET /data/ad-account-report-per-organisation-per-day/{organisationUuids}
-     - Ad account report per organisation  per day
+     - Ad account report per organisation per day
      - BASIC:
        - type: http
        - name: bearerAuth
