@@ -20,7 +20,7 @@ Return analytics report per campaign per day by organisation
 
 Analytics report per campaign per day by organisation
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -76,7 +76,7 @@ Return analytics report per channel group per day by organisation
 
 Analytics report per channel group per day by organisation
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -132,7 +132,7 @@ Return analytics report per device per channel group per organisation per view p
 
 Analytics report per device per channel group per organisation per view per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -188,7 +188,7 @@ Return analytics report per device per day by organisation
 
 Analytics report per device per day by organisation
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -244,7 +244,7 @@ Return analytics report per source medium per day by organisation
 
 Analytics report per source medium per day by organisation
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client

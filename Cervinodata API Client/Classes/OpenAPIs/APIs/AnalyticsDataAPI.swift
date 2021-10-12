@@ -6,10 +6,12 @@
 //
 
 import Foundation
-
-
+#if canImport(AnyCodable)
+import AnyCodable
+#endif
 
 open class AnalyticsDataAPI {
+
     /**
      * enum for parameter format
      */
@@ -26,8 +28,8 @@ open class AnalyticsDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getViews(organisationUuid: String, format: Format_getViews? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
-        getViewsWithRequestBuilder(organisationUuid: organisationUuid, format: format).execute(apiResponseQueue) { result -> Void in
+    open class func getViews(organisationUuid: String, format: Format_getViews? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
+        getViewsWithRequestBuilder(organisationUuid: organisationUuid, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -49,21 +51,26 @@ open class AnalyticsDataAPI {
      - returns: RequestBuilder<String> 
      */
     open class func getViewsWithRequestBuilder(organisationUuid: String, format: Format_getViews? = nil) -> RequestBuilder<String> {
-        var path = "/data/views/{organisationUuid}"
+        var localVariablePath = "/data/views/{organisationUuid}"
         let organisationUuidPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuid))"
         let organisationUuidPostEscape = organisationUuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{organisationUuid}", with: organisationUuidPostEscape, options: .literal, range: nil)
-        let URLString = Cervinodata API ClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "format": format?.encodeToJSON()
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuid}", with: organisationUuidPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "format": format?.encodeToJSON(),
         ])
 
-        let requestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
 
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
-
 }

@@ -10,14 +10,14 @@ Method | HTTP request | Description
 
 # **getCampaignGroups**
 ```swift
-    open class func getCampaignGroups(completion: @escaping (_ data: [Any]?, _ error: Error?) -> Void)
+    open class func getCampaignGroups(completion: @escaping (_ data: [AnyCodable]?, _ error: Error?) -> Void)
 ```
 
 Return campaign groups
 
 campaign groups
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -41,7 +41,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**[Any]**
+[**[AnyCodable]**](AnyCodable.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ Return organisations
 
 organisations
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client

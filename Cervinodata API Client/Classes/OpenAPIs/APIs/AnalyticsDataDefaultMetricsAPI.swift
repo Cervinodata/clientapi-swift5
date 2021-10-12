@@ -6,10 +6,12 @@
 //
 
 import Foundation
-
-
+#if canImport(AnyCodable)
+import AnyCodable
+#endif
 
 open class AnalyticsDataDefaultMetricsAPI {
+
     /**
      * enum for parameter dateFormat
      */
@@ -36,8 +38,8 @@ open class AnalyticsDataDefaultMetricsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAnalyticsReportPerCampaignPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerCampaignPerDay? = nil, format: Format_getAnalyticsReportPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
-        getAnalyticsReportPerCampaignPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result -> Void in
+    open class func getAnalyticsReportPerCampaignPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerCampaignPerDay? = nil, format: Format_getAnalyticsReportPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
+        getAnalyticsReportPerCampaignPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -61,23 +63,29 @@ open class AnalyticsDataDefaultMetricsAPI {
      - returns: RequestBuilder<String> 
      */
     open class func getAnalyticsReportPerCampaignPerDayWithRequestBuilder(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerCampaignPerDay? = nil, format: Format_getAnalyticsReportPerCampaignPerDay? = nil) -> RequestBuilder<String> {
-        var path = "/data/analytics-report-per-campaign-per-day/{organisationUuid}"
+        var localVariablePath = "/data/analytics-report-per-campaign-per-day/{organisationUuid}"
         let organisationUuidPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuid))"
         let organisationUuidPostEscape = organisationUuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{organisationUuid}", with: organisationUuidPostEscape, options: .literal, range: nil)
-        let URLString = Cervinodata API ClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(), 
-            "date_format": dateFormat?.encodeToJSON(), 
-            "format": format?.encodeToJSON()
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuid}", with: organisationUuidPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(),
+            "date_format": dateFormat?.encodeToJSON(),
+            "format": format?.encodeToJSON(),
         ])
 
-        let requestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
 
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -106,8 +114,8 @@ open class AnalyticsDataDefaultMetricsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAnalyticsReportPerChannelGroupPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerChannelGroupPerDay? = nil, format: Format_getAnalyticsReportPerChannelGroupPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
-        getAnalyticsReportPerChannelGroupPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result -> Void in
+    open class func getAnalyticsReportPerChannelGroupPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerChannelGroupPerDay? = nil, format: Format_getAnalyticsReportPerChannelGroupPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
+        getAnalyticsReportPerChannelGroupPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -131,23 +139,29 @@ open class AnalyticsDataDefaultMetricsAPI {
      - returns: RequestBuilder<String> 
      */
     open class func getAnalyticsReportPerChannelGroupPerDayWithRequestBuilder(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerChannelGroupPerDay? = nil, format: Format_getAnalyticsReportPerChannelGroupPerDay? = nil) -> RequestBuilder<String> {
-        var path = "/data/analytics-report-per-channel-group-per-day/{organisationUuid}"
+        var localVariablePath = "/data/analytics-report-per-channel-group-per-day/{organisationUuid}"
         let organisationUuidPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuid))"
         let organisationUuidPostEscape = organisationUuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{organisationUuid}", with: organisationUuidPostEscape, options: .literal, range: nil)
-        let URLString = Cervinodata API ClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(), 
-            "date_format": dateFormat?.encodeToJSON(), 
-            "format": format?.encodeToJSON()
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuid}", with: organisationUuidPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(),
+            "date_format": dateFormat?.encodeToJSON(),
+            "format": format?.encodeToJSON(),
         ])
 
-        let requestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
 
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -176,8 +190,8 @@ open class AnalyticsDataDefaultMetricsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay? = nil, format: Format_getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
-        getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result -> Void in
+    open class func getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay? = nil, format: Format_getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
+        getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -201,23 +215,29 @@ open class AnalyticsDataDefaultMetricsAPI {
      - returns: RequestBuilder<String> 
      */
     open class func getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDayWithRequestBuilder(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay? = nil, format: Format_getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay? = nil) -> RequestBuilder<String> {
-        var path = "/data/analytics-report-per-device-per-channel-group-per-organisation-per-view-per-day/{organisationUuids}"
+        var localVariablePath = "/data/analytics-report-per-device-per-channel-group-per-organisation-per-view-per-day/{organisationUuids}"
         let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
         let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
-        let URLString = Cervinodata API ClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(), 
-            "date_format": dateFormat?.encodeToJSON(), 
-            "format": format?.encodeToJSON()
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(),
+            "date_format": dateFormat?.encodeToJSON(),
+            "format": format?.encodeToJSON(),
         ])
 
-        let requestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
 
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -246,8 +266,8 @@ open class AnalyticsDataDefaultMetricsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAnalyticsReportPerDevicePerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerDevicePerDay? = nil, format: Format_getAnalyticsReportPerDevicePerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
-        getAnalyticsReportPerDevicePerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result -> Void in
+    open class func getAnalyticsReportPerDevicePerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerDevicePerDay? = nil, format: Format_getAnalyticsReportPerDevicePerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
+        getAnalyticsReportPerDevicePerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -271,23 +291,29 @@ open class AnalyticsDataDefaultMetricsAPI {
      - returns: RequestBuilder<String> 
      */
     open class func getAnalyticsReportPerDevicePerDayWithRequestBuilder(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerDevicePerDay? = nil, format: Format_getAnalyticsReportPerDevicePerDay? = nil) -> RequestBuilder<String> {
-        var path = "/data/analytics-report-per-device-per-day/{organisationUuid}"
+        var localVariablePath = "/data/analytics-report-per-device-per-day/{organisationUuid}"
         let organisationUuidPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuid))"
         let organisationUuidPostEscape = organisationUuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{organisationUuid}", with: organisationUuidPostEscape, options: .literal, range: nil)
-        let URLString = Cervinodata API ClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(), 
-            "date_format": dateFormat?.encodeToJSON(), 
-            "format": format?.encodeToJSON()
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuid}", with: organisationUuidPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(),
+            "date_format": dateFormat?.encodeToJSON(),
+            "format": format?.encodeToJSON(),
         ])
 
-        let requestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
 
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -316,8 +342,8 @@ open class AnalyticsDataDefaultMetricsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAnalyticsReportPerSourceMediumPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerSourceMediumPerDay? = nil, format: Format_getAnalyticsReportPerSourceMediumPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
-        getAnalyticsReportPerSourceMediumPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result -> Void in
+    open class func getAnalyticsReportPerSourceMediumPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerSourceMediumPerDay? = nil, format: Format_getAnalyticsReportPerSourceMediumPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
+        getAnalyticsReportPerSourceMediumPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -341,23 +367,28 @@ open class AnalyticsDataDefaultMetricsAPI {
      - returns: RequestBuilder<String> 
      */
     open class func getAnalyticsReportPerSourceMediumPerDayWithRequestBuilder(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerSourceMediumPerDay? = nil, format: Format_getAnalyticsReportPerSourceMediumPerDay? = nil) -> RequestBuilder<String> {
-        var path = "/data/analytics-report-per-source-medium-per-day/{organisationUuid}"
+        var localVariablePath = "/data/analytics-report-per-source-medium-per-day/{organisationUuid}"
         let organisationUuidPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuid))"
         let organisationUuidPostEscape = organisationUuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{organisationUuid}", with: organisationUuidPostEscape, options: .literal, range: nil)
-        let URLString = Cervinodata API ClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(), 
-            "date_format": dateFormat?.encodeToJSON(), 
-            "format": format?.encodeToJSON()
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuid}", with: organisationUuidPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(),
+            "date_format": dateFormat?.encodeToJSON(),
+            "format": format?.encodeToJSON(),
         ])
 
-        let requestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
 
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
-
 }

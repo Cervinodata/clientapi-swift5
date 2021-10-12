@@ -31,7 +31,7 @@ Return ad account report per organisation per day
 
 Ad account report per organisation per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -87,7 +87,7 @@ Return ad accounts by organisation
 
 Ad accounts by organisation
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -139,7 +139,7 @@ Return ad campaign report per day by organisation
 
 Ad campaign report per day by organisation
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -195,7 +195,7 @@ Return ad campaign report per organisation per account per campaign per device p
 
 Ad campaign report per organisation per account per campaign per device per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -251,7 +251,7 @@ Return ad campaign report per organisation per account per day
 
 Ad campaign report per organisation per account per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -307,7 +307,7 @@ Return ad campaigns by organisation
 
 Ad campaigns by organisation
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -361,7 +361,7 @@ Return bing ads extended report per organisation per account per campaign per da
 
 Bing ads extended report per organisation per account per campaign per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -417,7 +417,7 @@ Return facebook ad custom conversion report per organisation per account per cam
 
 Facebook ad custom conversion report per organisation per account per campaign per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -473,7 +473,7 @@ Return facebook ad extended report per organisation per account per campaign per
 
 Facebook ad extended report per organisation per account per campaign per ad group per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -529,7 +529,7 @@ Return facebook ad extended report per organisation per account per campaign per
 
 Facebook ad extended report per organisation per account per campaign per ad per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -585,7 +585,7 @@ Return facebook ad extended report per organisation per account per campaign per
 
 Facebook ad extended report per organisation per account per campaign per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -641,7 +641,7 @@ Return facebook ad extended report per organisation per account per campaign per
 
 Facebook ad extended report per organisation per account per campaign per device per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -697,7 +697,7 @@ Return google ads report per organisation per account per campaign per device pe
 
 Campaign group google ads report per organisation per account per campaign per device per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -753,7 +753,7 @@ Return linkedin ads extended report per organisation per account per campaign pe
 
 Linkedin ads extended report per organisation per account per campaign per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -809,7 +809,7 @@ Return snapchat ads extended report per organisation per account per campaign pe
 
 Snapchat ads extended report per organisation per account per campaign per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
@@ -865,7 +865,7 @@ Return twitter ads extended report per organisation per account per campaign per
 
 Twitter ads extended report per organisation per account per campaign per day
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cervinodata API Client
