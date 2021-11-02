@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDay**](AdvertisingDataAPI.md#getadcampaignreportperorganisationperaccountpercampaignperdeviceperday) | **GET** /data/ad-campaign-report-per-organisation-per-account-per-campaign-per-device-per-day/{organisationUuids} | Return ad campaign report per organisation per account per campaign per device per day
 [**getAdCampaignReportPerOrganisationPerAccountPerDay**](AdvertisingDataAPI.md#getadcampaignreportperorganisationperaccountperday) | **GET** /data/ad-campaign-report-per-organisation-per-account-per-day/{organisationUuids} | Return ad campaign report per organisation per account per day
 [**getAdCampaigns**](AdvertisingDataAPI.md#getadcampaigns) | **GET** /data/ad-campaigns/{organisationUuid} | Return ad campaigns by organisation
+[**getAdGroups**](AdvertisingDataAPI.md#getadgroups) | **GET** /data/ad-groups/{organisationUuid} | Return ad groups by organisation
 [**getBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](AdvertisingDataAPI.md#getbingadsextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/bing-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return bing ads extended report per organisation per account per campaign per day
 [**getFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay**](AdvertisingDataAPI.md#getfacebookadcustomconversionreportperorganisationperaccountpercampaignperday) | **GET** /data/facebook-ad-custom-conversion-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return facebook ad custom conversion report per organisation per account per campaign per day
 [**getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay**](AdvertisingDataAPI.md#getfacebookadextendedreportperorganisationperaccountpercampaignperadgroupperday) | **GET** /data/facebook-ad-extended-report-per-organisation-per-account-per-campaign-per-ad-group-per-day/{organisationUuids} | Return facebook ad extended report per organisation per account per campaign per ad group per day
@@ -318,6 +319,60 @@ let format = "format_example" // String | Output format (optional)
 
 // Return ad campaigns by organisation
 AdvertisingDataAPI.getAdCampaigns(organisationUuid: organisationUuid, fromDate: fromDate, format: format) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organisationUuid** | **String** | Organisation uuid | 
+ **fromDate** | **Date** | From date | [optional] 
+ **format** | **String** | Output format | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/csv, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAdGroups**
+```swift
+    open class func getAdGroups(organisationUuid: String, fromDate: Date? = nil, format: Format_getAdGroups? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+```
+
+Return ad groups by organisation
+
+Ad groups by organisation
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cervinodata API Client
+
+let organisationUuid = "organisationUuid_example" // String | Organisation uuid
+let fromDate = Date() // Date | From date (optional)
+let format = "format_example" // String | Output format (optional)
+
+// Return ad groups by organisation
+AdvertisingDataAPI.getAdGroups(organisationUuid: organisationUuid, fromDate: fromDate, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return

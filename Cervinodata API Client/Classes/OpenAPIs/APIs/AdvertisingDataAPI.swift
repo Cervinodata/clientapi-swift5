@@ -444,6 +444,71 @@ open class AdvertisingDataAPI {
     }
 
     /**
+     * enum for parameter format
+     */
+    public enum Format_getAdGroups: String, CaseIterable {
+        case csv = "csv"
+        case json = "json"
+    }
+
+    /**
+     Return ad groups by organisation
+     
+     - parameter organisationUuid: (path) Organisation uuid 
+     - parameter fromDate: (query) From date (optional)
+     - parameter format: (query) Output format (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getAdGroups(organisationUuid: String, fromDate: Date? = nil, format: Format_getAdGroups? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
+        getAdGroupsWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, format: format).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Return ad groups by organisation
+     - GET /data/ad-groups/{organisationUuid}
+     - Ad groups by organisation
+     - BASIC:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuid: (path) Organisation uuid 
+     - parameter fromDate: (query) From date (optional)
+     - parameter format: (query) Output format (optional)
+     - returns: RequestBuilder<String> 
+     */
+    open class func getAdGroupsWithRequestBuilder(organisationUuid: String, fromDate: Date? = nil, format: Format_getAdGroups? = nil) -> RequestBuilder<String> {
+        var localVariablePath = "/data/ad-groups/{organisationUuid}"
+        let organisationUuidPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuid))"
+        let organisationUuidPostEscape = organisationUuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuid}", with: organisationUuidPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(),
+            "format": format?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
      * enum for parameter dateFormat
      */
     public enum DateFormat_getBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay: String, CaseIterable {
