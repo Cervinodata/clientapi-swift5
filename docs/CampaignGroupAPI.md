@@ -20,11 +20,13 @@ Method | HTTP request | Description
 [**getCampaignGroupFacebookAdExtendedReportPerOrganisationPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupfacebookadextendedreportperorganisationpercampaignperday) | **GET** /data/campaign-group-facebook-ad-extended-report-per-organisation-per-campaign-per-day/{organisationUuids} | Return campaign group facebook ad extended report per organisation per campaign per day
 [**getCampaignGroupFacebookAdReportPerOrganisationPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupfacebookadreportperorganisationpercampaignperday) | **GET** /data/campaign-group-facebook-ad-report-per-organisation-per-campaign-per-day/{organisationUuids} | Return campaign group facebook ad report per organisation per campaign per day
 [**getCampaignGroupGoalReportPerOrganisationPerDay**](CampaignGroupAPI.md#getcampaigngroupgoalreportperorganisationperday) | **GET** /data/campaign-group-goal-report-per-organisation-per-day/{organisationUuids} | Return campaign group goal report per organisation per day
+[**getCampaignGroupGoogleAdsExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay**](CampaignGroupAPI.md#getcampaigngroupgoogleadsextendedreportperorganisationperaccountpercampaignperadgroupperday) | **GET** /data/campaign-group-google-ads-extended-report-per-organisation-per-account-per-campaign-per-ad-group-per-day/{organisationUuids} | Return campaign group google ads extended report per organisation per account per campaign per ad group per day
 [**getCampaignGroupGoogleAdsReportPerOrganisationPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupgoogleadsreportperorganisationpercampaignperday) | **GET** /data/campaign-group-google-ads-report-per-organisation-per-campaign-per-day/{organisationUuids} | Return campaign group google ads report per organisation per campaign per day
 [**getCampaignGroupLinkedInAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngrouplinkedinadsextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/campaign-group-linkedin-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return campaign group linkedin ads extended report per organisation per account per campaign per day
 [**getCampaignGroupPinterestAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngrouppinterestadsextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/campaign-group-pinterest-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return campaign group pinterest ads extended report per organisation per account per campaign per day
 [**getCampaignGroupReportPerOrganisationPerDay**](CampaignGroupAPI.md#getcampaigngroupreportperorganisationperday) | **GET** /data/campaign-group-report-per-organisation-per-day/{organisationUuids} | Return campaign group report per organisation per day
 [**getCampaignGroupSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupsnapchatadsextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/campaign-group-snapchat-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return campaign group snapchat ads extended report per organisation per account per campaign per day
+[**getCampaignGroupTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngrouptiktokadsextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/campaign-group-tiktok-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return campaign group tiktok ads extended report per organisation per account per campaign per day
 [**getCampaignGroupTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngrouptwitteradsextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/campaign-group-twitter-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return campaign group twitter ads extended report per organisation per account per campaign per day
 [**getCampaignGroupVideoReportPerOrganisationPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupvideoreportperorganisationpercampaignperday) | **GET** /data/campaign-group-video-report-per-organisation-per-campaign-per-day/{organisationUuids} | Return campaign group video report per organisation per campaign per day
 [**getCampaignGroupVideoReportPerOrganisationPerDay**](CampaignGroupAPI.md#getcampaigngroupvideoreportperorganisationperday) | **GET** /data/campaign-group-video-report-per-organisation-per-day/{organisationUuids} | Return campaign group video report per organisation per day
@@ -926,6 +928,62 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getCampaignGroupGoogleAdsExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay**
+```swift
+    open class func getCampaignGroupGoogleAdsExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupGoogleAdsExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay? = nil, format: Format_getCampaignGroupGoogleAdsExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+```
+
+Return campaign group google ads extended report per organisation per account per campaign per ad group per day
+
+Campaign group google ads extended report per organisation per account per campaign per ad group per day
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cervinodata API Client
+
+let organisationUuids = ["inner_example"] // [String] | Organisation uuids
+let fromDate = Date() // Date | From date (optional)
+let dateFormat = "dateFormat_example" // String | Outputted date format (optional)
+let format = "format_example" // String | Output format (use csv for large result sets) (optional)
+
+// Return campaign group google ads extended report per organisation per account per campaign per ad group per day
+CampaignGroupAPI.getCampaignGroupGoogleAdsExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organisationUuids** | [**[String]**](String.md) | Organisation uuids | 
+ **fromDate** | **Date** | From date | [optional] 
+ **dateFormat** | **String** | Outputted date format | [optional] 
+ **format** | **String** | Output format (use csv for large result sets) | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/csv, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getCampaignGroupGoogleAdsReportPerOrganisationPerCampaignPerDay**
 ```swift
     open class func getCampaignGroupGoogleAdsReportPerOrganisationPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupGoogleAdsReportPerOrganisationPerCampaignPerDay? = nil, format: Format_getCampaignGroupGoogleAdsReportPerOrganisationPerCampaignPerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
@@ -1171,6 +1229,62 @@ let format = "format_example" // String | Output format (use csv for large resul
 
 // Return campaign group snapchat ads extended report per organisation per account per campaign per day
 CampaignGroupAPI.getCampaignGroupSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organisationUuids** | [**[String]**](String.md) | Organisation uuids | 
+ **fromDate** | **Date** | From date | [optional] 
+ **dateFormat** | **String** | Outputted date format | [optional] 
+ **format** | **String** | Output format (use csv for large result sets) | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/csv, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCampaignGroupTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**
+```swift
+    open class func getCampaignGroupTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getCampaignGroupTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+```
+
+Return campaign group tiktok ads extended report per organisation per account per campaign per day
+
+Campaign group tiktok ads extended report per organisation per account per campaign per day
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cervinodata API Client
+
+let organisationUuids = ["inner_example"] // [String] | Organisation uuids
+let fromDate = Date() // Date | From date (optional)
+let dateFormat = "dateFormat_example" // String | Outputted date format (optional)
+let format = "format_example" // String | Output format (use csv for large result sets) (optional)
+
+// Return campaign group tiktok ads extended report per organisation per account per campaign per day
+CampaignGroupAPI.getCampaignGroupTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
