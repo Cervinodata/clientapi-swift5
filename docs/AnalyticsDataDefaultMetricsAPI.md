@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay**](AnalyticsDataDefaultMetricsAPI.md#getanalyticsreportperdeviceperchannelgroupperorganisationperviewperday) | **GET** /data/analytics-report-per-device-per-channel-group-per-organisation-per-view-per-day/{organisationUuids} | Return analytics report per device per channel group per organisation per view per day
 [**getAnalyticsReportPerDevicePerDay**](AnalyticsDataDefaultMetricsAPI.md#getanalyticsreportperdeviceperday) | **GET** /data/analytics-report-per-device-per-day/{organisationUuid} | Return analytics report per device per day by organisation
 [**getAnalyticsReportPerSourceMediumPerDay**](AnalyticsDataDefaultMetricsAPI.md#getanalyticsreportpersourcemediumperday) | **GET** /data/analytics-report-per-source-medium-per-day/{organisationUuid} | Return analytics report per source medium per day by organisation
+[**getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDay**](AnalyticsDataDefaultMetricsAPI.md#getga4reportperdeviceperchannelgroupperorganisationperpropertyperday) | **GET** /data/ga4-report-per-device-per-channel-group-per-organisation-per-property-per-day/{organisationUuids} | Return GA4 report per device per channel group per organisation per property per day
 
 
 # **getAnalyticsReportPerCampaignPerDay**
@@ -272,6 +273,62 @@ AnalyticsDataDefaultMetricsAPI.getAnalyticsReportPerSourceMediumPerDay(organisat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organisationUuid** | **String** | Organisation uuid | 
+ **fromDate** | **Date** | From date | [optional] 
+ **dateFormat** | **String** | Outputted date format | [optional] 
+ **format** | **String** | Output format (use csv for large result sets) | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/csv, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDay**
+```swift
+    open class func getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDay? = nil, format: Format_getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+```
+
+Return GA4 report per device per channel group per organisation per property per day
+
+GA4 report per device per channel group per organisation per property per day
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cervinodata API Client
+
+let organisationUuids = ["inner_example"] // [String] | Organisation uuids
+let fromDate = Date() // Date | From date (optional)
+let dateFormat = "dateFormat_example" // String | Outputted date format (optional)
+let format = "format_example" // String | Output format (use csv for large result sets) (optional)
+
+// Return GA4 report per device per channel group per organisation per property per day
+AnalyticsDataDefaultMetricsAPI.getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organisationUuids** | [**[String]**](String.md) | Organisation uuids | 
  **fromDate** | **Date** | From date | [optional] 
  **dateFormat** | **String** | Outputted date format | [optional] 
  **format** | **String** | Output format (use csv for large result sets) | [optional] 
