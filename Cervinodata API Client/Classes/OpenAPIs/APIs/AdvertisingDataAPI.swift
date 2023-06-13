@@ -511,6 +511,234 @@ open class AdvertisingDataAPI {
     /**
      * enum for parameter dateFormat
      */
+    public enum DateFormat_getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDay: String, CaseIterable {
+        case yyyyMmDd = "YYYY-MM-DD"
+        case yyyymmdd = "YYYYMMDD"
+    }
+
+    /**
+     * enum for parameter format
+     */
+    public enum Format_getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDay: String, CaseIterable {
+        case csv = "csv"
+        case json = "json"
+    }
+
+    /**
+     Return adform extended report per organisation per campaign per creative per day
+     
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
+        getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Return adform extended report per organisation per campaign per creative per day
+     - GET /data/adform-extended-report-per-organisation-per-campaign-per-creative-per-day/{organisationUuids}
+     - Adform extended report per organisation per campaign per creative per day
+     - BASIC:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - returns: RequestBuilder<String> 
+     */
+    open class func getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDayWithRequestBuilder(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDay? = nil) -> RequestBuilder<String> {
+        var localVariablePath = "/data/adform-extended-report-per-organisation-per-campaign-per-creative-per-day/{organisationUuids}"
+        let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
+        let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(),
+            "date_format": dateFormat?.encodeToJSON(),
+            "format": format?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     * enum for parameter dateFormat
+     */
+    public enum DateFormat_getAdformExtendedReportPerOrganisationPerCampaignPerDay: String, CaseIterable {
+        case yyyyMmDd = "YYYY-MM-DD"
+        case yyyymmdd = "YYYYMMDD"
+    }
+
+    /**
+     * enum for parameter format
+     */
+    public enum Format_getAdformExtendedReportPerOrganisationPerCampaignPerDay: String, CaseIterable {
+        case csv = "csv"
+        case json = "json"
+    }
+
+    /**
+     Return adform extended report per organisation per campaign per day
+     
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getAdformExtendedReportPerOrganisationPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerCampaignPerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
+        getAdformExtendedReportPerOrganisationPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Return adform extended report per organisation per campaign per day
+     - GET /data/adform-extended-report-per-organisation-per-campaign-per-day/{organisationUuids}
+     - Adform extended report per organisation per campaign per day
+     - BASIC:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - returns: RequestBuilder<String> 
+     */
+    open class func getAdformExtendedReportPerOrganisationPerCampaignPerDayWithRequestBuilder(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerCampaignPerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerCampaignPerDay? = nil) -> RequestBuilder<String> {
+        var localVariablePath = "/data/adform-extended-report-per-organisation-per-campaign-per-day/{organisationUuids}"
+        let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
+        let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(),
+            "date_format": dateFormat?.encodeToJSON(),
+            "format": format?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     * enum for parameter dateFormat
+     */
+    public enum DateFormat_getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDay: String, CaseIterable {
+        case yyyyMmDd = "YYYY-MM-DD"
+        case yyyymmdd = "YYYYMMDD"
+    }
+
+    /**
+     * enum for parameter format
+     */
+    public enum Format_getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDay: String, CaseIterable {
+        case csv = "csv"
+        case json = "json"
+    }
+
+    /**
+     Return adform extended report per organisation per campaign per line item per day
+     
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
+        getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Return adform extended report per organisation per campaign per line item per day
+     - GET /data/adform-extended-report-per-organisation-per-campaign-per-line-item-per-day/{organisationUuids}
+     - Adform extended report per organisation per campaign per line item per day
+     - BASIC:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter fromDate: (query) From date (optional)
+     - parameter dateFormat: (query) Outputted date format (optional)
+     - parameter format: (query) Output format (use csv for large result sets) (optional)
+     - returns: RequestBuilder<String> 
+     */
+    open class func getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDayWithRequestBuilder(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDay? = nil) -> RequestBuilder<String> {
+        var localVariablePath = "/data/adform-extended-report-per-organisation-per-campaign-per-line-item-per-day/{organisationUuids}"
+        let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
+        let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from_date": fromDate?.encodeToJSON(),
+            "date_format": dateFormat?.encodeToJSON(),
+            "format": format?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     * enum for parameter dateFormat
+     */
     public enum DateFormat_getBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay: String, CaseIterable {
         case yyyyMmDd = "YYYY-MM-DD"
         case yyyymmdd = "YYYYMMDD"
