@@ -11,9 +11,9 @@ Method | HTTP request | Description
 [**getAdCampaignReportPerOrganisationPerAccountPerDay**](AdvertisingDataAPI.md#getadcampaignreportperorganisationperaccountperday) | **GET** /data/ad-campaign-report-per-organisation-per-account-per-day/{organisationUuids} | Return ad campaign report per organisation per account per day
 [**getAdCampaigns**](AdvertisingDataAPI.md#getadcampaigns) | **GET** /data/ad-campaigns/{organisationUuid} | Return ad campaigns by organisation
 [**getAdGroups**](AdvertisingDataAPI.md#getadgroups) | **GET** /data/ad-groups/{organisationUuid} | Return ad groups by organisation
+[**getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDay**](AdvertisingDataAPI.md#getadformextendedreportperorganisationperaccountpercampaignpercreativeperday) | **GET** /data/adform-extended-report-per-organisation-per-account-per-campaign-per-creative-per-day/{organisationUuids} | Return adform extended report per organisation per account per campaign per creative per day
 [**getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](AdvertisingDataAPI.md#getadformextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/adform-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return adform extended report per organisation per account per campaign per day
-[**getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDay**](AdvertisingDataAPI.md#getadformextendedreportperorganisationpercampaignpercreativeperday) | **GET** /data/adform-extended-report-per-organisation-per-campaign-per-creative-per-day/{organisationUuids} | Return adform extended report per organisation per campaign per creative per day
-[**getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDay**](AdvertisingDataAPI.md#getadformextendedreportperorganisationpercampaignperlineitemperday) | **GET** /data/adform-extended-report-per-organisation-per-campaign-per-line-item-per-day/{organisationUuids} | Return adform extended report per organisation per campaign per line item per day
+[**getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDay**](AdvertisingDataAPI.md#getadformextendedreportperorganisationperaccountpercampaignperlineitemperday) | **GET** /data/adform-extended-report-per-organisation-per-account-per-campaign-per-line-item-per-day/{organisationUuids} | Return adform extended report per organisation per account per campaign per line item per day
 [**getBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](AdvertisingDataAPI.md#getbingadsextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/bing-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return bing ads extended report per organisation per account per campaign per day
 [**getFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay**](AdvertisingDataAPI.md#getfacebookadcustomconversionreportperorganisationperaccountpercampaignperday) | **GET** /data/facebook-ad-custom-conversion-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return facebook ad custom conversion report per organisation per account per campaign per day
 [**getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay**](AdvertisingDataAPI.md#getfacebookadextendedreportperorganisationperaccountpercampaignperadgroupperday) | **GET** /data/facebook-ad-extended-report-per-organisation-per-account-per-campaign-per-ad-group-per-day/{organisationUuids} | Return facebook ad extended report per organisation per account per campaign per ad group per day
@@ -415,6 +415,62 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDay**
+```swift
+    open class func getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+```
+
+Return adform extended report per organisation per account per campaign per creative per day
+
+Adform extended report per organisation per account per campaign per creative per day
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cervinodata API Client
+
+let organisationUuids = ["inner_example"] // [String] | Organisation uuids
+let fromDate = Date() // Date | From date (optional)
+let dateFormat = "dateFormat_example" // String | Outputted date format (optional)
+let format = "format_example" // String | Output format (use csv for large result sets) (optional)
+
+// Return adform extended report per organisation per account per campaign per creative per day
+AdvertisingDataAPI.getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organisationUuids** | [**[String]**](String.md) | Organisation uuids | 
+ **fromDate** | **Date** | From date | [optional] 
+ **dateFormat** | **String** | Outputted date format | [optional] 
+ **format** | **String** | Output format (use csv for large result sets) | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/csv, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay**
 ```swift
     open class func getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
@@ -471,14 +527,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDay**
+# **getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDay**
 ```swift
-    open class func getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+    open class func getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
 ```
 
-Return adform extended report per organisation per campaign per creative per day
+Return adform extended report per organisation per account per campaign per line item per day
 
-Adform extended report per organisation per campaign per creative per day
+Adform extended report per organisation per account per campaign per line item per day
 
 ### Example
 ```swift
@@ -490,64 +546,8 @@ let fromDate = Date() // Date | From date (optional)
 let dateFormat = "dateFormat_example" // String | Outputted date format (optional)
 let format = "format_example" // String | Output format (use csv for large result sets) (optional)
 
-// Return adform extended report per organisation per campaign per creative per day
-AdvertisingDataAPI.getAdformExtendedReportPerOrganisationPerCampaignPerCreativePerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organisationUuids** | [**[String]**](String.md) | Organisation uuids | 
- **fromDate** | **Date** | From date | [optional] 
- **dateFormat** | **String** | Outputted date format | [optional] 
- **format** | **String** | Output format (use csv for large result sets) | [optional] 
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/csv, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDay**
-```swift
-    open class func getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
-```
-
-Return adform extended report per organisation per campaign per line item per day
-
-Adform extended report per organisation per campaign per line item per day
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import Cervinodata API Client
-
-let organisationUuids = ["inner_example"] // [String] | Organisation uuids
-let fromDate = Date() // Date | From date (optional)
-let dateFormat = "dateFormat_example" // String | Outputted date format (optional)
-let format = "format_example" // String | Output format (use csv for large result sets) (optional)
-
-// Return adform extended report per organisation per campaign per line item per day
-AdvertisingDataAPI.getAdformExtendedReportPerOrganisationPerCampaignPerLineItemPerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
+// Return adform extended report per organisation per account per campaign per line item per day
+AdvertisingDataAPI.getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
