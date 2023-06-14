@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**getCampaignGroupAdReportPerOrganisationPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupadreportperorganisationpercampaignperday) | **GET** /data/campaign-group-ad-report-per-organisation-per-campaign-per-day/{organisationUuids} | Return campaign group ad report per organisation per campaign per day
 [**getCampaignGroupAdReportPerOrganisationPerCampaignPerWeek**](CampaignGroupAPI.md#getcampaigngroupadreportperorganisationpercampaignperweek) | **GET** /data/campaign-group-ad-report-per-organisation-per-campaign-per-week/{organisationUuids} | Return campaign group ad report per organisation per campaign per week
 [**getCampaignGroupAdReportPerOrganisationPerDay**](CampaignGroupAPI.md#getcampaigngroupadreportperorganisationperday) | **GET** /data/campaign-group-ad-report-per-organisation-per-day/{organisationUuids} | Return campaign group ad report per organisation per day
-[**getCampaignGroupAdformExtendedReportPerOrganisationPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupadformextendedreportperorganisationpercampaignperday) | **GET** /data/campaign-group-adform-extended-report-per-organisation-per-campaign-per-day/{organisationUuids} | Return campaign group adform extended report per organisation per campaign per day
+[**getCampaignGroupAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupadformextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/campaign-group-adform-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return campaign group adform extended report per organisation per account per campaign per day
 [**getCampaignGroupAdformReportPerOrganisationPerCampaignPerDay**](CampaignGroupAPI.md#getcampaigngroupadformreportperorganisationpercampaignperday) | **GET** /data/campaign-group-adform-report-per-organisation-per-campaign-per-day/{organisationUuids} | Return campaign group adform report per organisation per campaign per day
 [**getCampaignGroupAdformReportPerOrganisationPerCampaignPerLineItemPerDay**](CampaignGroupAPI.md#getcampaigngroupadformreportperorganisationpercampaignperlineitemperday) | **GET** /data/campaign-group-adform-report-per-organisation-per-campaign-per-line-item-per-day/{organisationUuids} | Return campaign group adform report per organisation per campaign per line-item per day
 [**getCampaignGroupAnalyticsReportPerOrganisationPerDay**](CampaignGroupAPI.md#getcampaigngroupanalyticsreportperorganisationperday) | **GET** /data/campaign-group-analytics-report-per-organisation-per-day/{organisationUuids} | Return campaign group analytics report per organisation per day
@@ -201,14 +201,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getCampaignGroupAdformExtendedReportPerOrganisationPerCampaignPerDay**
+# **getCampaignGroupAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay**
 ```swift
-    open class func getCampaignGroupAdformExtendedReportPerOrganisationPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupAdformExtendedReportPerOrganisationPerCampaignPerDay? = nil, format: Format_getCampaignGroupAdformExtendedReportPerOrganisationPerCampaignPerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+    open class func getCampaignGroupAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getCampaignGroupAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getCampaignGroupAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
 ```
 
-Return campaign group adform extended report per organisation per campaign per day
+Return campaign group adform extended report per organisation per account per campaign per day
 
-Campaign group adform extended report per organisation per campaign per day
+Campaign group adform extended report per organisation per account per campaign per day
 
 ### Example
 ```swift
@@ -220,8 +220,8 @@ let fromDate = Date() // Date | From date (optional)
 let dateFormat = "dateFormat_example" // String | Outputted date format (optional)
 let format = "format_example" // String | Output format (use csv for large result sets) (optional)
 
-// Return campaign group adform extended report per organisation per campaign per day
-CampaignGroupAPI.getCampaignGroupAdformExtendedReportPerOrganisationPerCampaignPerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
+// Return campaign group adform extended report per organisation per account per campaign per day
+CampaignGroupAPI.getCampaignGroupAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
