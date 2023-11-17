@@ -5,6 +5,9 @@
 //
 
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 open class Cervinodata API ClientAPI {
     public static var basePath = "https://app.cervinodata.com/api/v1"
     public static var customHeaders: [String: String] = [:]
