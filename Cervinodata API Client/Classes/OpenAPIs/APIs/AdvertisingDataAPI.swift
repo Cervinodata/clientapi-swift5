@@ -38,8 +38,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAdAccountReportPerOrganisationPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdAccountReportPerOrganisationPerDay? = nil, format: Format_getAdAccountReportPerOrganisationPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAdAccountReportPerOrganisationPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAdAccountReportPerOrganisationPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdAccountReportPerOrganisationPerDay? = nil, format: Format_getAdAccountReportPerOrganisationPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAdAccountReportPerOrganisationPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -53,7 +54,7 @@ open class AdvertisingDataAPI {
      Return ad account report per organisation per day
      - GET /data/ad-account-report-per-organisation-per-day/{organisationUuids}
      - Ad account report per organisation per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -72,9 +73,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -85,7 +86,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -104,8 +105,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAdAccounts(organisationUuid: String, format: Format_getAdAccounts? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAdAccountsWithRequestBuilder(organisationUuid: organisationUuid, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAdAccounts(organisationUuid: String, format: Format_getAdAccounts? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAdAccountsWithRequestBuilder(organisationUuid: organisationUuid, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -119,7 +121,7 @@ open class AdvertisingDataAPI {
      Return ad accounts by organisation
      - GET /data/ad-accounts/{organisationUuid}
      - Ad accounts by organisation
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuid: (path) Organisation uuid 
@@ -136,7 +138,7 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "format": format?.encodeToJSON(),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -147,7 +149,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -176,8 +178,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAdCampaignReportPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAdCampaignReportPerDay? = nil, format: Format_getAdCampaignReportPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAdCampaignReportPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAdCampaignReportPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAdCampaignReportPerDay? = nil, format: Format_getAdCampaignReportPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAdCampaignReportPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -191,7 +194,7 @@ open class AdvertisingDataAPI {
      Return ad campaign report per day by organisation
      - GET /data/ad-campaign-report-per-day/{organisationUuid}
      - Ad campaign report per day by organisation
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuid: (path) Organisation uuid 
@@ -210,9 +213,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -223,7 +226,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -252,8 +255,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, format: Format_getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, format: Format_getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAdCampaignReportPerOrganisationPerAccountPerCampaignPerDevicePerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -267,7 +271,7 @@ open class AdvertisingDataAPI {
      Return ad campaign report per organisation per account per campaign per device per day
      - GET /data/ad-campaign-report-per-organisation-per-account-per-campaign-per-device-per-day/{organisationUuids}
      - Ad campaign report per organisation per account per campaign per device per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -286,9 +290,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -299,7 +303,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -328,8 +332,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAdCampaignReportPerOrganisationPerAccountPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdCampaignReportPerOrganisationPerAccountPerDay? = nil, format: Format_getAdCampaignReportPerOrganisationPerAccountPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAdCampaignReportPerOrganisationPerAccountPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAdCampaignReportPerOrganisationPerAccountPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdCampaignReportPerOrganisationPerAccountPerDay? = nil, format: Format_getAdCampaignReportPerOrganisationPerAccountPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAdCampaignReportPerOrganisationPerAccountPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -343,7 +348,7 @@ open class AdvertisingDataAPI {
      Return ad campaign report per organisation per account per day
      - GET /data/ad-campaign-report-per-organisation-per-account-per-day/{organisationUuids}
      - Ad campaign report per organisation per account per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -362,9 +367,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -375,7 +380,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -395,8 +400,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAdCampaigns(organisationUuid: String, fromDate: Date? = nil, format: Format_getAdCampaigns? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAdCampaignsWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAdCampaigns(organisationUuid: String, fromDate: Date? = nil, format: Format_getAdCampaigns? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAdCampaignsWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -410,7 +416,7 @@ open class AdvertisingDataAPI {
      Return ad campaigns by organisation
      - GET /data/ad-campaigns/{organisationUuid}
      - Ad campaigns by organisation
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuid: (path) Organisation uuid 
@@ -428,8 +434,8 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -440,7 +446,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -460,8 +466,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAdGroups(organisationUuid: String, fromDate: Date? = nil, format: Format_getAdGroups? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAdGroupsWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAdGroups(organisationUuid: String, fromDate: Date? = nil, format: Format_getAdGroups? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAdGroupsWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -475,7 +482,7 @@ open class AdvertisingDataAPI {
      Return ad groups by organisation
      - GET /data/ad-groups/{organisationUuid}
      - Ad groups by organisation
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuid: (path) Organisation uuid 
@@ -493,8 +500,8 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -505,7 +512,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -534,8 +541,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerCreativePerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -549,7 +557,7 @@ open class AdvertisingDataAPI {
      Return adform extended report per organisation per account per campaign per creative per day
      - GET /data/adform-extended-report-per-organisation-per-account-per-campaign-per-creative-per-day/{organisationUuids}
      - Adform extended report per organisation per account per campaign per creative per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -568,9 +576,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -581,7 +589,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -610,8 +618,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -625,7 +634,7 @@ open class AdvertisingDataAPI {
      Return adform extended report per organisation per account per campaign per day
      - GET /data/adform-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}
      - Adform extended report per organisation per account per campaign per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -644,9 +653,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -657,7 +666,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -686,8 +695,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDay? = nil, format: Format_getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAdformExtendedReportPerOrganisationPerAccountPerCampaignPerLineItemPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -701,7 +711,7 @@ open class AdvertisingDataAPI {
      Return adform extended report per organisation per account per campaign per line item per day
      - GET /data/adform-extended-report-per-organisation-per-account-per-campaign-per-line-item-per-day/{organisationUuids}
      - Adform extended report per organisation per account per campaign per line item per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -720,9 +730,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -733,7 +743,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -762,8 +772,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBingAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -777,7 +788,7 @@ open class AdvertisingDataAPI {
      Return bing ads extended report per organisation per account per campaign per day
      - GET /data/bing-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}
      - Bing ads extended report per organisation per account per campaign per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -796,9 +807,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -809,7 +820,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -838,8 +849,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFacebookAdCustomConversionReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -853,7 +865,7 @@ open class AdvertisingDataAPI {
      Return facebook ad custom conversion report per organisation per account per campaign per day
      - GET /data/facebook-ad-custom-conversion-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}
      - Facebook ad custom conversion report per organisation per account per campaign per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -872,9 +884,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -885,7 +897,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -914,8 +926,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay? = nil, format: Format_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay? = nil, format: Format_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -929,7 +942,7 @@ open class AdvertisingDataAPI {
      Return facebook ad extended report per organisation per account per campaign per ad group per day
      - GET /data/facebook-ad-extended-report-per-organisation-per-account-per-campaign-per-ad-group-per-day/{organisationUuids}
      - Facebook ad extended report per organisation per account per campaign per ad group per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -948,9 +961,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -961,7 +974,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -990,8 +1003,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDayPlus(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDayPlus? = nil, format: Format_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDayPlus? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDayPlusWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDayPlus(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDayPlus? = nil, format: Format_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDayPlus? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdGroupPerDayPlusWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1005,7 +1019,7 @@ open class AdvertisingDataAPI {
      Return facebook ad extended report per organisation per account per campaign per ad group per day plus
      - GET /data/facebook-ad-extended-report-per-organisation-per-account-per-campaign-per-ad-group-per-day-plus/{organisationUuids}
      - Facebook ad extended report per organisation per account per campaign per ad group per day plus
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -1024,9 +1038,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -1037,7 +1051,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -1066,8 +1080,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdPerDay? = nil, format: Format_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdPerDay? = nil, format: Format_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerAdPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1081,7 +1096,7 @@ open class AdvertisingDataAPI {
      Return facebook ad extended report per organisation per account per campaign per ad per day
      - GET /data/facebook-ad-extended-report-per-organisation-per-account-per-campaign-per-ad-per-day/{organisationUuids}
      - Facebook ad extended report per organisation per account per campaign per ad per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -1100,9 +1115,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -1113,7 +1128,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -1142,8 +1157,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1157,7 +1173,7 @@ open class AdvertisingDataAPI {
      Return facebook ad extended report per organisation per account per campaign per day
      - GET /data/facebook-ad-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}
      - Facebook ad extended report per organisation per account per campaign per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -1176,9 +1192,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -1189,7 +1205,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -1218,8 +1234,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDayPlus(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDayPlus? = nil, format: Format_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDayPlus? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDayPlusWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDayPlus(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDayPlus? = nil, format: Format_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDayPlus? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDayPlusWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1233,7 +1250,7 @@ open class AdvertisingDataAPI {
      Return facebook ad extended report per organisation per account per campaign per day plus
      - GET /data/facebook-ad-extended-report-per-organisation-per-account-per-campaign-per-day-plus/{organisationUuids}
      - Facebook ad extended report per organisation per account per campaign per day plus
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -1252,9 +1269,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -1265,7 +1282,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -1294,8 +1311,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, format: Format_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, format: Format_getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFacebookAdExtendedReportPerOrganisationPerAccountPerCampaignPerDevicePerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1309,7 +1327,7 @@ open class AdvertisingDataAPI {
      Return facebook ad extended report per organisation per account per campaign per device per day
      - GET /data/facebook-ad-extended-report-per-organisation-per-account-per-campaign-per-device-per-day/{organisationUuids}
      - Facebook ad extended report per organisation per account per campaign per device per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -1328,9 +1346,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -1341,7 +1359,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -1370,8 +1388,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, format: Format_getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, format: Format_getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getGoogleAdsReportPerOrganisationPerAccountPerCampaignPerDevicePerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1385,7 +1404,7 @@ open class AdvertisingDataAPI {
      Return google ads report per organisation per account per campaign per device per day
      - GET /data/google-ads-report-per-organisation-per-account-per-campaign-per-device-per-day/{organisationUuids}
      - Campaign group google ads report per organisation per account per campaign per device per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -1404,9 +1423,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -1417,7 +1436,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -1446,8 +1465,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getHashedAdCampaignReportPerOrganisationPerAccountPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getHashedAdCampaignReportPerOrganisationPerAccountPerDay? = nil, format: Format_getHashedAdCampaignReportPerOrganisationPerAccountPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getHashedAdCampaignReportPerOrganisationPerAccountPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getHashedAdCampaignReportPerOrganisationPerAccountPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getHashedAdCampaignReportPerOrganisationPerAccountPerDay? = nil, format: Format_getHashedAdCampaignReportPerOrganisationPerAccountPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getHashedAdCampaignReportPerOrganisationPerAccountPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1461,7 +1481,7 @@ open class AdvertisingDataAPI {
      Return hashed ad campaign report per organisation per account per day
      - GET /data/hashed-ad-campaign-report-per-organisation-per-account-per-day/{organisationUuids}
      - Hashed ad campaign report per organisation per account per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -1480,9 +1500,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -1493,7 +1513,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -1522,8 +1542,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getLinkedInAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getLinkedInAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getLinkedInAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getLinkedInAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getLinkedInAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getLinkedInAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getLinkedInAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getLinkedInAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1537,7 +1558,7 @@ open class AdvertisingDataAPI {
      Return linkedin ads extended report per organisation per account per campaign per day
      - GET /data/linkedin-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}
      - Linkedin ads extended report per organisation per account per campaign per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -1556,9 +1577,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -1569,7 +1590,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -1598,8 +1619,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getPinterestAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getPinterestAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getPinterestAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getPinterestAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getPinterestAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getPinterestAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getPinterestAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getPinterestAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1613,7 +1635,7 @@ open class AdvertisingDataAPI {
      Return pinterest ads extended report per organisation per account per campaign per day
      - GET /data/pinterest-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}
      - Pinterest ads extended report per organisation per account per campaign per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -1632,9 +1654,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -1645,7 +1667,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -1674,8 +1696,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1689,7 +1712,7 @@ open class AdvertisingDataAPI {
      Return snapchat ads extended report per organisation per account per campaign per day
      - GET /data/snapchat-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}
      - Snapchat ads extended report per organisation per account per campaign per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -1708,9 +1731,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -1721,7 +1744,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -1750,8 +1773,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1765,7 +1789,7 @@ open class AdvertisingDataAPI {
      Return tiktok ads extended report per organisation per account per campaign per day
      - GET /data/tiktok-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}
      - TikTok ads extended report per organisation per account per campaign per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -1784,9 +1808,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -1797,7 +1821,7 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -1826,8 +1850,9 @@ open class AdvertisingDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, format: Format_getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1841,7 +1866,7 @@ open class AdvertisingDataAPI {
      Return twitter ads extended report per organisation per account per campaign per day
      - GET /data/twitter-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids}
      - Twitter ads extended report per organisation per account per campaign per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -1860,9 +1885,9 @@ open class AdvertisingDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -1873,6 +1898,6 @@ open class AdvertisingDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 }

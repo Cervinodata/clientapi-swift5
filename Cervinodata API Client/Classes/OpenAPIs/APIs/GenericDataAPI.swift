@@ -18,8 +18,9 @@ open class GenericDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getCampaignGroups(apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AnyCodable]?, _ error: Error?) -> Void)) {
-        getCampaignGroupsWithRequestBuilder().execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getCampaignGroups(apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AnyCodable]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCampaignGroupsWithRequestBuilder().execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -33,7 +34,7 @@ open class GenericDataAPI {
      Return campaign groups
      - GET /data/campaign-groups
      - campaign groups
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - returns: RequestBuilder<[AnyCodable]> 
@@ -53,7 +54,7 @@ open class GenericDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<[AnyCodable]>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -71,8 +72,9 @@ open class GenericDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getOrganisations(format: Format_getOrganisations? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getOrganisationsWithRequestBuilder(format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getOrganisations(format: Format_getOrganisations? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOrganisationsWithRequestBuilder(format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -86,7 +88,7 @@ open class GenericDataAPI {
      Return organisations
      - GET /data/organisations
      - organisations
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter format: (query) Output format (optional)
@@ -99,7 +101,7 @@ open class GenericDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "format": format?.encodeToJSON(),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -110,6 +112,6 @@ open class GenericDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 }

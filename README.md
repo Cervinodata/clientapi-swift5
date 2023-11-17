@@ -70,6 +70,10 @@ Class | Method | HTTP request | Description
 *AdvertisingDataAPI* | [**getSnapchatAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](docs/AdvertisingDataAPI.md#getsnapchatadsextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/snapchat-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return snapchat ads extended report per organisation per account per campaign per day
 *AdvertisingDataAPI* | [**getTikTokAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](docs/AdvertisingDataAPI.md#gettiktokadsextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/tiktok-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return tiktok ads extended report per organisation per account per campaign per day
 *AdvertisingDataAPI* | [**getTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](docs/AdvertisingDataAPI.md#gettwitteradsextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/twitter-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return twitter ads extended report per organisation per account per campaign per day
+*AnalyticsDataAPI* | [**getGA4ReportPerChannelGroupPerOrganisationPerProperty**](docs/AnalyticsDataAPI.md#getga4reportperchannelgroupperorganisationperproperty) | **GET** /data/ga4-report-per-channel-group-per-organisation-per-property/{organisationUuids} | Return GA4 report per channel group per organisation per property
+*AnalyticsDataAPI* | [**getGA4ReportPerChannelGroupPerOrganisationPerPropertyPerMonth**](docs/AnalyticsDataAPI.md#getga4reportperchannelgroupperorganisationperpropertypermonth) | **GET** /data/ga4-report-per-channel-group-per-organisation-per-property-per-month/{organisationUuids} | Return GA4 report per channel group per organisation per property per month
+*AnalyticsDataAPI* | [**getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth**](docs/AnalyticsDataAPI.md#getga4reportperchannelgroupperproductnameperorganisationperpropertypermonth) | **GET** /data/ga4-report-per-channel-group-per-product-name-per-organisation-per-property-per-month/{organisationUuids} | Return GA4 report per channel group per product name per organisation per property per month
+*AnalyticsDataAPI* | [**getGA4ReportPerChannelGroupPerSourceMediumPerOrganisationPerPropertyPerMonth**](docs/AnalyticsDataAPI.md#getga4reportperchannelgrouppersourcemediumperorganisationperpropertypermonth) | **GET** /data/ga4-report-per-channel-group-per-source-medium-per-organisation-per-property-per-month/{organisationUuids} | Return GA4 report per channel group per source medium per organisation per property per month
 *AnalyticsDataAPI* | [**getViews**](docs/AnalyticsDataAPI.md#getviews) | **GET** /data/views/{organisationUuid} | Return views by organisation
 *AnalyticsDataDefaultMetricsAPI* | [**getAnalyticsReportPerCampaignPerDay**](docs/AnalyticsDataDefaultMetricsAPI.md#getanalyticsreportpercampaignperday) | **GET** /data/analytics-report-per-campaign-per-day/{organisationUuid} | Return analytics report per campaign per day by organisation
 *AnalyticsDataDefaultMetricsAPI* | [**getAnalyticsReportPerChannelGroupPerDay**](docs/AnalyticsDataDefaultMetricsAPI.md#getanalyticsreportperchannelgroupperday) | **GET** /data/analytics-report-per-channel-group-per-day/{organisationUuid} | Return analytics report per channel group per day by organisation
@@ -81,6 +85,10 @@ Class | Method | HTTP request | Description
 *AnalyticsDataGoalsAPI* | [**getAnalyticsGoalReportPerChannelGroupPerDay**](docs/AnalyticsDataGoalsAPI.md#getanalyticsgoalreportperchannelgroupperday) | **GET** /data/analytics-goal-report-per-channel-group-per-day/{organisationUuid} | Return analytics goal report per channel group per day by organisation
 *AnalyticsDataGoalsAPI* | [**getAnalyticsGoalReportPerDevicePerDay**](docs/AnalyticsDataGoalsAPI.md#getanalyticsgoalreportperdeviceperday) | **GET** /data/analytics-goal-report-per-device-per-day/{organisationUuid} | Return analytics goal report per device per day by organisation
 *AnalyticsDataGoalsAPI* | [**getAnalyticsGoalReportPerSourceMediumPerDay**](docs/AnalyticsDataGoalsAPI.md#getanalyticsgoalreportpersourcemediumperday) | **GET** /data/analytics-goal-report-per-source-medium-per-day/{organisationUuid} | Return analytics goal report per source medium per day by organisation
+*AnalyticsDataProductMetricsAPI* | [**getGA4ReportPerProductNamePerOrganisationPerPropertyPerWeek**](docs/AnalyticsDataProductMetricsAPI.md#getga4reportperproductnameperorganisationperpropertyperweek) | **GET** /data/ga4-report-per-product-name-per-organisation-per-property-per-week/{organisationUuids} | Return GA4 report per product name per organisation per property per week
+*AnalyticsDataProductMetricsAPI* | [**getGA4ReportPerProductSkuPerOrganisationPerPropertyPerWeek**](docs/AnalyticsDataProductMetricsAPI.md#getga4reportperproductskuperorganisationperpropertyperweek) | **GET** /data/ga4-report-per-product-sku-per-organisation-per-property-per-week/{organisationUuids} | Return GA4 report per product sku per organisation per property per week
+*AnalyticsDataTransactionMetricsAPI* | [**getGA4ReportPerCampaignPerOrganisationPerProperty**](docs/AnalyticsDataTransactionMetricsAPI.md#getga4reportpercampaignperorganisationperproperty) | **GET** /data/ga4-report-per-campaign-per-organisation-per-property/{organisationUuids} | Return GA4 report per campaign per organisation per property
+*AnalyticsDataTransactionMetricsAPI* | [**getGA4ReportPerCampaignPerOrganisationPerPropertyPerMonth**](docs/AnalyticsDataTransactionMetricsAPI.md#getga4reportpercampaignperorganisationperpropertypermonth) | **GET** /data/ga4-report-per-campaign-per-organisation-per-property-per-month/{organisationUuids} | Return GA4 report per campaign per organisation per property per month
 *CampaignGroupAPI* | [**getCampaignGroupAdReportPerOrganisationPerCampaignPerDay**](docs/CampaignGroupAPI.md#getcampaigngroupadreportperorganisationpercampaignperday) | **GET** /data/campaign-group-ad-report-per-organisation-per-campaign-per-day/{organisationUuids} | Return campaign group ad report per organisation per campaign per day
 *CampaignGroupAPI* | [**getCampaignGroupAdReportPerOrganisationPerCampaignPerWeek**](docs/CampaignGroupAPI.md#getcampaigngroupadreportperorganisationpercampaignperweek) | **GET** /data/campaign-group-ad-report-per-organisation-per-campaign-per-week/{organisationUuids} | Return campaign group ad report per organisation per campaign per week
 *CampaignGroupAPI* | [**getCampaignGroupAdReportPerOrganisationPerDay**](docs/CampaignGroupAPI.md#getcampaigngroupadreportperorganisationperday) | **GET** /data/campaign-group-ad-report-per-organisation-per-day/{organisationUuids} | Return campaign group ad report per organisation per day
@@ -110,18 +118,22 @@ Class | Method | HTTP request | Description
 *CampaignGroupAPI* | [**getCampaignGroupVideoReportPerOrganisationPerDay**](docs/CampaignGroupAPI.md#getcampaigngroupvideoreportperorganisationperday) | **GET** /data/campaign-group-video-report-per-organisation-per-day/{organisationUuids} | Return campaign group video report per organisation per day
 *GenericDataAPI* | [**getCampaignGroups**](docs/GenericDataAPI.md#getcampaigngroups) | **GET** /data/campaign-groups | Return campaign groups
 *GenericDataAPI* | [**getOrganisations**](docs/GenericDataAPI.md#getorganisations) | **GET** /data/organisations | Return organisations
+*ProductDataAPI* | [**getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth**](docs/ProductDataAPI.md#getga4reportperchannelgroupperproductnameperorganisationperpropertypermonth) | **GET** /data/ga4-report-per-channel-group-per-product-name-per-organisation-per-property-per-month/{organisationUuids} | Return GA4 report per channel group per product name per organisation per property per month
 
 
 ## Documentation For Models
 
 
 
+<a id="documentation-for-authorization"></a>
 ## Documentation For Authorization
 
 
-## bearerAuth
+Authentication schemes defined for the API:
+<a id="bearerAuth"></a>
+### bearerAuth
 
-- **Type**: HTTP basic authentication
+- **Type**: HTTP Bearer Token authentication
 
 
 ## Author

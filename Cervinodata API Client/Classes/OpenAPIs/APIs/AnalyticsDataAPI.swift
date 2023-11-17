@@ -13,6 +13,206 @@ import AnyCodable
 open class AnalyticsDataAPI {
 
     /**
+     Return GA4 report per channel group per organisation per property
+     
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getGA4ReportPerChannelGroupPerOrganisationPerProperty(organisationUuids: [String], apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getGA4ReportPerChannelGroupPerOrganisationPerPropertyWithRequestBuilder(organisationUuids: organisationUuids).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Return GA4 report per channel group per organisation per property
+     - GET /data/ga4-report-per-channel-group-per-organisation-per-property/{organisationUuids}
+     - GA4 report per channel group per organisation per property
+     - Bearer Token:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuids: (path) Organisation uuids 
+     - returns: RequestBuilder<String> 
+     */
+    open class func getGA4ReportPerChannelGroupPerOrganisationPerPropertyWithRequestBuilder(organisationUuids: [String]) -> RequestBuilder<String> {
+        var localVariablePath = "/data/ga4-report-per-channel-group-per-organisation-per-property/{organisationUuids}"
+        let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
+        let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Return GA4 report per channel group per organisation per property per month
+     
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getGA4ReportPerChannelGroupPerOrganisationPerPropertyPerMonth(organisationUuids: [String], apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getGA4ReportPerChannelGroupPerOrganisationPerPropertyPerMonthWithRequestBuilder(organisationUuids: organisationUuids).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Return GA4 report per channel group per organisation per property per month
+     - GET /data/ga4-report-per-channel-group-per-organisation-per-property-per-month/{organisationUuids}
+     - GA4 report per channel group per organisation per property per month
+     - Bearer Token:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuids: (path) Organisation uuids 
+     - returns: RequestBuilder<String> 
+     */
+    open class func getGA4ReportPerChannelGroupPerOrganisationPerPropertyPerMonthWithRequestBuilder(organisationUuids: [String]) -> RequestBuilder<String> {
+        var localVariablePath = "/data/ga4-report-per-channel-group-per-organisation-per-property-per-month/{organisationUuids}"
+        let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
+        let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Return GA4 report per channel group per product name per organisation per property per month
+     
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth(organisationUuids: [String], apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonthWithRequestBuilder(organisationUuids: organisationUuids).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Return GA4 report per channel group per product name per organisation per property per month
+     - GET /data/ga4-report-per-channel-group-per-product-name-per-organisation-per-property-per-month/{organisationUuids}
+     - GA4 report per channel group per product name per organisation per property per month
+     - Bearer Token:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuids: (path) Organisation uuids 
+     - returns: RequestBuilder<String> 
+     */
+    open class func getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonthWithRequestBuilder(organisationUuids: [String]) -> RequestBuilder<String> {
+        var localVariablePath = "/data/ga4-report-per-channel-group-per-product-name-per-organisation-per-property-per-month/{organisationUuids}"
+        let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
+        let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Return GA4 report per channel group per source medium per organisation per property per month
+     
+     - parameter organisationUuids: (path) Organisation uuids 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getGA4ReportPerChannelGroupPerSourceMediumPerOrganisationPerPropertyPerMonth(organisationUuids: [String], apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getGA4ReportPerChannelGroupPerSourceMediumPerOrganisationPerPropertyPerMonthWithRequestBuilder(organisationUuids: organisationUuids).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Return GA4 report per channel group per source medium per organisation per property per month
+     - GET /data/ga4-report-per-channel-group-per-source-medium-per-organisation-per-property-per-month/{organisationUuids}
+     - GA4 report per channel group per source medium per organisation per property per month
+     - Bearer Token:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuids: (path) Organisation uuids 
+     - returns: RequestBuilder<String> 
+     */
+    open class func getGA4ReportPerChannelGroupPerSourceMediumPerOrganisationPerPropertyPerMonthWithRequestBuilder(organisationUuids: [String]) -> RequestBuilder<String> {
+        var localVariablePath = "/data/ga4-report-per-channel-group-per-source-medium-per-organisation-per-property-per-month/{organisationUuids}"
+        let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
+        let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuids}", with: organisationUuidsPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      * enum for parameter format
      */
     public enum Format_getViews: String, CaseIterable {
@@ -28,8 +228,9 @@ open class AnalyticsDataAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getViews(organisationUuid: String, format: Format_getViews? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getViewsWithRequestBuilder(organisationUuid: organisationUuid, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getViews(organisationUuid: String, format: Format_getViews? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getViewsWithRequestBuilder(organisationUuid: organisationUuid, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -43,7 +244,7 @@ open class AnalyticsDataAPI {
      Return views by organisation
      - GET /data/views/{organisationUuid}
      - Views by organisation
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuid: (path) Organisation uuid 
@@ -60,7 +261,7 @@ open class AnalyticsDataAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "format": format?.encodeToJSON(),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -71,6 +272,6 @@ open class AnalyticsDataAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 }

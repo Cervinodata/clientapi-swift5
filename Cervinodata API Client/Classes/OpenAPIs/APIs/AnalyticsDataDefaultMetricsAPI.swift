@@ -38,8 +38,9 @@ open class AnalyticsDataDefaultMetricsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAnalyticsReportPerCampaignPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerCampaignPerDay? = nil, format: Format_getAnalyticsReportPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAnalyticsReportPerCampaignPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAnalyticsReportPerCampaignPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerCampaignPerDay? = nil, format: Format_getAnalyticsReportPerCampaignPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAnalyticsReportPerCampaignPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -53,7 +54,7 @@ open class AnalyticsDataDefaultMetricsAPI {
      Return analytics report per campaign per day by organisation
      - GET /data/analytics-report-per-campaign-per-day/{organisationUuid}
      - Analytics report per campaign per day by organisation
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuid: (path) Organisation uuid 
@@ -72,9 +73,9 @@ open class AnalyticsDataDefaultMetricsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -85,7 +86,7 @@ open class AnalyticsDataDefaultMetricsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -114,8 +115,9 @@ open class AnalyticsDataDefaultMetricsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAnalyticsReportPerChannelGroupPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerChannelGroupPerDay? = nil, format: Format_getAnalyticsReportPerChannelGroupPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAnalyticsReportPerChannelGroupPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAnalyticsReportPerChannelGroupPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerChannelGroupPerDay? = nil, format: Format_getAnalyticsReportPerChannelGroupPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAnalyticsReportPerChannelGroupPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -129,7 +131,7 @@ open class AnalyticsDataDefaultMetricsAPI {
      Return analytics report per channel group per day by organisation
      - GET /data/analytics-report-per-channel-group-per-day/{organisationUuid}
      - Analytics report per channel group per day by organisation
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuid: (path) Organisation uuid 
@@ -148,9 +150,9 @@ open class AnalyticsDataDefaultMetricsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -161,7 +163,7 @@ open class AnalyticsDataDefaultMetricsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -190,8 +192,9 @@ open class AnalyticsDataDefaultMetricsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay? = nil, format: Format_getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay? = nil, format: Format_getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAnalyticsReportPerDevicePerChannelGroupPerOrganisationPerViewPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -205,7 +208,7 @@ open class AnalyticsDataDefaultMetricsAPI {
      Return analytics report per device per channel group per organisation per view per day
      - GET /data/analytics-report-per-device-per-channel-group-per-organisation-per-view-per-day/{organisationUuids}
      - Analytics report per device per channel group per organisation per view per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -224,9 +227,9 @@ open class AnalyticsDataDefaultMetricsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -237,7 +240,7 @@ open class AnalyticsDataDefaultMetricsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -266,8 +269,9 @@ open class AnalyticsDataDefaultMetricsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAnalyticsReportPerDevicePerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerDevicePerDay? = nil, format: Format_getAnalyticsReportPerDevicePerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAnalyticsReportPerDevicePerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAnalyticsReportPerDevicePerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerDevicePerDay? = nil, format: Format_getAnalyticsReportPerDevicePerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAnalyticsReportPerDevicePerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -281,7 +285,7 @@ open class AnalyticsDataDefaultMetricsAPI {
      Return analytics report per device per day by organisation
      - GET /data/analytics-report-per-device-per-day/{organisationUuid}
      - Analytics report per device per day by organisation
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuid: (path) Organisation uuid 
@@ -300,9 +304,9 @@ open class AnalyticsDataDefaultMetricsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -313,7 +317,7 @@ open class AnalyticsDataDefaultMetricsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -342,8 +346,9 @@ open class AnalyticsDataDefaultMetricsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAnalyticsReportPerSourceMediumPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerSourceMediumPerDay? = nil, format: Format_getAnalyticsReportPerSourceMediumPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getAnalyticsReportPerSourceMediumPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getAnalyticsReportPerSourceMediumPerDay(organisationUuid: String, fromDate: Date? = nil, dateFormat: DateFormat_getAnalyticsReportPerSourceMediumPerDay? = nil, format: Format_getAnalyticsReportPerSourceMediumPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAnalyticsReportPerSourceMediumPerDayWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -357,7 +362,7 @@ open class AnalyticsDataDefaultMetricsAPI {
      Return analytics report per source medium per day by organisation
      - GET /data/analytics-report-per-source-medium-per-day/{organisationUuid}
      - Analytics report per source medium per day by organisation
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuid: (path) Organisation uuid 
@@ -376,9 +381,9 @@ open class AnalyticsDataDefaultMetricsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -389,7 +394,7 @@ open class AnalyticsDataDefaultMetricsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -418,8 +423,9 @@ open class AnalyticsDataDefaultMetricsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDay? = nil, format: Format_getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) {
-        getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
+    @discardableResult
+    open class func getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDay(organisationUuids: [String], fromDate: Date? = nil, dateFormat: DateFormat_getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDay? = nil, format: Format_getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDay? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getGA4ReportPerDevicePerChannelGroupPerOrganisationPerPropertyPerDayWithRequestBuilder(organisationUuids: organisationUuids, fromDate: fromDate, dateFormat: dateFormat, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -433,7 +439,7 @@ open class AnalyticsDataDefaultMetricsAPI {
      Return GA4 report per device per channel group per organisation per property per day
      - GET /data/ga4-report-per-device-per-channel-group-per-organisation-per-property-per-day/{organisationUuids}
      - GA4 report per device per channel group per organisation per property per day
-     - BASIC:
+     - Bearer Token:
        - type: http
        - name: bearerAuth
      - parameter organisationUuids: (path) Organisation uuids 
@@ -452,9 +458,9 @@ open class AnalyticsDataDefaultMetricsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from_date": fromDate?.encodeToJSON(),
-            "date_format": dateFormat?.encodeToJSON(),
-            "format": format?.encodeToJSON(),
+            "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "date_format": (wrappedValue: dateFormat?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -465,6 +471,6 @@ open class AnalyticsDataDefaultMetricsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 }

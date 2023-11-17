@@ -41,7 +41,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[AnyCodable]**](AnyCodable.md)
+**[AnyCodable]**
 
 ### Authorization
 

@@ -3,7 +3,7 @@ targets:
   Cervinodata API Client:
     type: framework
     platform: iOS
-    deploymentTarget: "9.0"
+    deploymentTarget: "11.0"
     sources: [Cervinodata API Client]
     info:
       path: ./Info.plist
