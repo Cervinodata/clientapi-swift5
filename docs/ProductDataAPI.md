@@ -4,12 +4,12 @@ All URIs are relative to *https://app.cervinodata.com/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth**](ProductDataAPI.md#getga4reportperchannelgroupperproductnameperorganisationperpropertypermonth) | **GET** /data/ga4-report-per-channel-group-per-product-name-per-organisation-per-property-per-month/{organisationUuids} | Return GA4 report per channel group per product name per organisation per property per month
+[**getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth_0**](ProductDataAPI.md#getga4reportperchannelgroupperproductnameperorganisationperpropertypermonth_0) | **GET** /data/ga4-report-per-channel-group-per-product-name-per-organisation-per-property-per-month/{organisationUuids} | Return GA4 report per channel group per product name per organisation per property per month
 
 
-# **getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth**
+# **getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth_0**
 ```swift
-    open class func getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth(organisationUuids: [String], completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+    open class func getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth_0(organisationUuids: [String], completion: @escaping (_ data: String?, _ error: Error?) -> Void)
 ```
 
 Return GA4 report per channel group per product name per organisation per property per month
@@ -24,7 +24,7 @@ import Cervinodata API Client
 let organisationUuids = ["inner_example"] // [String] | Organisation uuids
 
 // Return GA4 report per channel group per product name per organisation per property per month
-ProductDataAPI.getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth(organisationUuids: organisationUuids) { (response, error) in
+ProductDataAPI.getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth_0(organisationUuids: organisationUuids) { (response, error) in
     guard error == nil else {
         print(error)
         return
