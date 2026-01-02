@@ -396,13 +396,14 @@ open class AdvertisingDataAPI {
      
      - parameter organisationUuid: (path) Organisation uuid 
      - parameter fromDate: (query) From date (optional)
+     - parameter includeInactive: (query) Include inactive campaigns (optional)
      - parameter format: (query) Output format (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAdCampaigns(organisationUuid: String, fromDate: Date? = nil, format: Format_getAdCampaigns? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAdCampaignsWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, format: format).execute(apiResponseQueue) { result in
+    open class func getAdCampaigns(organisationUuid: String, fromDate: Date? = nil, includeInactive: Bool? = nil, format: Format_getAdCampaigns? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAdCampaignsWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, includeInactive: includeInactive, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -421,10 +422,11 @@ open class AdvertisingDataAPI {
        - name: bearerAuth
      - parameter organisationUuid: (path) Organisation uuid 
      - parameter fromDate: (query) From date (optional)
+     - parameter includeInactive: (query) Include inactive campaigns (optional)
      - parameter format: (query) Output format (optional)
      - returns: RequestBuilder<String> 
      */
-    open class func getAdCampaignsWithRequestBuilder(organisationUuid: String, fromDate: Date? = nil, format: Format_getAdCampaigns? = nil) -> RequestBuilder<String> {
+    open class func getAdCampaignsWithRequestBuilder(organisationUuid: String, fromDate: Date? = nil, includeInactive: Bool? = nil, format: Format_getAdCampaigns? = nil) -> RequestBuilder<String> {
         var localVariablePath = "/data/ad-campaigns/{organisationUuid}"
         let organisationUuidPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuid))"
         let organisationUuidPostEscape = organisationUuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -435,6 +437,7 @@ open class AdvertisingDataAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "include_inactive": (wrappedValue: includeInactive?.encodeToJSON(), isExplode: true),
             "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
@@ -462,13 +465,14 @@ open class AdvertisingDataAPI {
      
      - parameter organisationUuid: (path) Organisation uuid 
      - parameter fromDate: (query) From date (optional)
+     - parameter includeInactive: (query) Include inactive ad groups (optional)
      - parameter format: (query) Output format (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAdGroups(organisationUuid: String, fromDate: Date? = nil, format: Format_getAdGroups? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAdGroupsWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, format: format).execute(apiResponseQueue) { result in
+    open class func getAdGroups(organisationUuid: String, fromDate: Date? = nil, includeInactive: Bool? = nil, format: Format_getAdGroups? = nil, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAdGroupsWithRequestBuilder(organisationUuid: organisationUuid, fromDate: fromDate, includeInactive: includeInactive, format: format).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -487,10 +491,11 @@ open class AdvertisingDataAPI {
        - name: bearerAuth
      - parameter organisationUuid: (path) Organisation uuid 
      - parameter fromDate: (query) From date (optional)
+     - parameter includeInactive: (query) Include inactive ad groups (optional)
      - parameter format: (query) Output format (optional)
      - returns: RequestBuilder<String> 
      */
-    open class func getAdGroupsWithRequestBuilder(organisationUuid: String, fromDate: Date? = nil, format: Format_getAdGroups? = nil) -> RequestBuilder<String> {
+    open class func getAdGroupsWithRequestBuilder(organisationUuid: String, fromDate: Date? = nil, includeInactive: Bool? = nil, format: Format_getAdGroups? = nil) -> RequestBuilder<String> {
         var localVariablePath = "/data/ad-groups/{organisationUuid}"
         let organisationUuidPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuid))"
         let organisationUuidPostEscape = organisationUuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -501,6 +506,7 @@ open class AdvertisingDataAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "from_date": (wrappedValue: fromDate?.encodeToJSON(), isExplode: true),
+            "include_inactive": (wrappedValue: includeInactive?.encodeToJSON(), isExplode: true),
             "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 

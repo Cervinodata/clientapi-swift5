@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 # **getAdCampaigns**
 ```swift
-    open class func getAdCampaigns(organisationUuid: String, fromDate: Date? = nil, format: Format_getAdCampaigns? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+    open class func getAdCampaigns(organisationUuid: String, fromDate: Date? = nil, includeInactive: Bool? = nil, format: Format_getAdCampaigns? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
 ```
 
 Return ad campaigns by organisation
@@ -323,10 +323,11 @@ import Cervinodata API Client
 
 let organisationUuid = "organisationUuid_example" // String | Organisation uuid
 let fromDate = Date() // Date | From date (optional)
+let includeInactive = true // Bool | Include inactive campaigns (optional)
 let format = "format_example" // String | Output format (optional)
 
 // Return ad campaigns by organisation
-AdvertisingDataAPI.getAdCampaigns(organisationUuid: organisationUuid, fromDate: fromDate, format: format) { (response, error) in
+AdvertisingDataAPI.getAdCampaigns(organisationUuid: organisationUuid, fromDate: fromDate, includeInactive: includeInactive, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -344,6 +345,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organisationUuid** | **String** | Organisation uuid | 
  **fromDate** | **Date** | From date | [optional] 
+ **includeInactive** | **Bool** | Include inactive campaigns | [optional] 
  **format** | **String** | Output format | [optional] 
 
 ### Return type
@@ -363,7 +365,7 @@ Name | Type | Description  | Notes
 
 # **getAdGroups**
 ```swift
-    open class func getAdGroups(organisationUuid: String, fromDate: Date? = nil, format: Format_getAdGroups? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+    open class func getAdGroups(organisationUuid: String, fromDate: Date? = nil, includeInactive: Bool? = nil, format: Format_getAdGroups? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
 ```
 
 Return ad groups by organisation
@@ -377,10 +379,11 @@ import Cervinodata API Client
 
 let organisationUuid = "organisationUuid_example" // String | Organisation uuid
 let fromDate = Date() // Date | From date (optional)
+let includeInactive = true // Bool | Include inactive ad groups (optional)
 let format = "format_example" // String | Output format (optional)
 
 // Return ad groups by organisation
-AdvertisingDataAPI.getAdGroups(organisationUuid: organisationUuid, fromDate: fromDate, format: format) { (response, error) in
+AdvertisingDataAPI.getAdGroups(organisationUuid: organisationUuid, fromDate: fromDate, includeInactive: includeInactive, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -398,6 +401,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organisationUuid** | **String** | Organisation uuid | 
  **fromDate** | **Date** | From date | [optional] 
+ **includeInactive** | **Bool** | Include inactive ad groups | [optional] 
  **format** | **String** | Output format | [optional] 
 
 ### Return type

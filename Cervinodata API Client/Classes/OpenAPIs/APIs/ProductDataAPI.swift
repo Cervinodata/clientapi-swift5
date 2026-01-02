@@ -20,8 +20,8 @@ open class ProductDataAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth_0(organisationUuids: [String], apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
-        return getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth_0WithRequestBuilder(organisationUuids: organisationUuids).execute(apiResponseQueue) { result in
+    open class func getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth(organisationUuids: [String], apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonthWithRequestBuilder(organisationUuids: organisationUuids).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -41,7 +41,7 @@ open class ProductDataAPI {
      - parameter organisationUuids: (path) Organisation uuids 
      - returns: RequestBuilder<String> 
      */
-    open class func getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth_0WithRequestBuilder(organisationUuids: [String]) -> RequestBuilder<String> {
+    open class func getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonthWithRequestBuilder(organisationUuids: [String]) -> RequestBuilder<String> {
         var localVariablePath = "/data/ga4-report-per-channel-group-per-product-name-per-organisation-per-property-per-month/{organisationUuids}"
         let organisationUuidsPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuids))"
         let organisationUuidsPostEscape = organisationUuidsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
