@@ -117,13 +117,17 @@ Class | Method | HTTP request | Description
 *CampaignGroupAPI* | [**getCampaignGroupTwitterAdsExtendedReportPerOrganisationPerAccountPerCampaignPerDay**](docs/CampaignGroupAPI.md#getcampaigngrouptwitteradsextendedreportperorganisationperaccountpercampaignperday) | **GET** /data/campaign-group-twitter-ads-extended-report-per-organisation-per-account-per-campaign-per-day/{organisationUuids} | Return campaign group twitter ads extended report per organisation per account per campaign per day
 *CampaignGroupAPI* | [**getCampaignGroupVideoReportPerOrganisationPerCampaignPerDay**](docs/CampaignGroupAPI.md#getcampaigngroupvideoreportperorganisationpercampaignperday) | **GET** /data/campaign-group-video-report-per-organisation-per-campaign-per-day/{organisationUuids} | Return campaign group video report per organisation per campaign per day
 *CampaignGroupAPI* | [**getCampaignGroupVideoReportPerOrganisationPerDay**](docs/CampaignGroupAPI.md#getcampaigngroupvideoreportperorganisationperday) | **GET** /data/campaign-group-video-report-per-organisation-per-day/{organisationUuids} | Return campaign group video report per organisation per day
+*GenericDataAPI* | [**createOrganisation**](docs/GenericDataAPI.md#createorganisation) | **POST** /data/organisations | Create an organisation
+*GenericDataAPI* | [**deleteOrganisation**](docs/GenericDataAPI.md#deleteorganisation) | **DELETE** /data/organisations/{organisationUuid} | Delete an organisation
 *GenericDataAPI* | [**getCampaignGroups**](docs/GenericDataAPI.md#getcampaigngroups) | **GET** /data/campaign-groups | Return campaign groups
 *GenericDataAPI* | [**getOrganisations**](docs/GenericDataAPI.md#getorganisations) | **GET** /data/organisations | Return organisations
+*GenericDataAPI* | [**updateOrganisation**](docs/GenericDataAPI.md#updateorganisation) | **PUT** /data/organisations/{organisationUuid} | Update an organisation
 *ProductDataAPI* | [**getGA4ReportPerChannelGroupPerProductNamePerOrganisationPerPropertyPerMonth**](docs/ProductDataAPI.md#getga4reportperchannelgroupperproductnameperorganisationperpropertypermonth) | **GET** /data/ga4-report-per-channel-group-per-product-name-per-organisation-per-property-per-month/{organisationUuids} | Return GA4 report per channel group per product name per organisation per property per month
 
 
 ## Documentation For Models
 
+ - [CreateOrganisationRequest](docs/CreateOrganisationRequest.md)
 
 
 <a id="documentation-for-authorization"></a>

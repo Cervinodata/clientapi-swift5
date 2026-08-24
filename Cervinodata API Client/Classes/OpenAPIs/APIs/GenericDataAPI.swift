@@ -13,6 +13,103 @@ import AnyCodable
 open class GenericDataAPI {
 
     /**
+     Create an organisation
+     
+     - parameter createOrganisationRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createOrganisation(createOrganisationRequest: CreateOrganisationRequest, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: AnyCodable?, _ error: Error?) -> Void)) -> RequestTask {
+        return createOrganisationWithRequestBuilder(createOrganisationRequest: createOrganisationRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create an organisation
+     - POST /data/organisations
+     - Create a new organisation
+     - Bearer Token:
+       - type: http
+       - name: bearerAuth
+     - parameter createOrganisationRequest: (body)  
+     - returns: RequestBuilder<AnyCodable> 
+     */
+    open class func createOrganisationWithRequestBuilder(createOrganisationRequest: CreateOrganisationRequest) -> RequestBuilder<AnyCodable> {
+        let localVariablePath = "/data/organisations"
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createOrganisationRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<AnyCodable>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Delete an organisation
+     
+     - parameter organisationUuid: (path) Organisation uuid 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func deleteOrganisation(organisationUuid: String, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteOrganisationWithRequestBuilder(organisationUuid: organisationUuid).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Delete an organisation
+     - DELETE /data/organisations/{organisationUuid}
+     - Delete an organisation. Accounts belonging to the organisation are reassigned to the default organisation. The default organisation itself cannot be deleted.
+     - Bearer Token:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuid: (path) Organisation uuid 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func deleteOrganisationWithRequestBuilder(organisationUuid: String) -> RequestBuilder<Void> {
+        var localVariablePath = "/data/organisations/{organisationUuid}"
+        let organisationUuidPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuid))"
+        let organisationUuidPostEscape = organisationUuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuid}", with: organisationUuidPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Return campaign groups
      
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -113,5 +210,57 @@ open class GenericDataAPI {
         let localVariableRequestBuilder: RequestBuilder<String>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Update an organisation
+     
+     - parameter organisationUuid: (path) Organisation uuid 
+     - parameter createOrganisationRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateOrganisation(organisationUuid: String, createOrganisationRequest: CreateOrganisationRequest, apiResponseQueue: DispatchQueue = Cervinodata API ClientAPI.apiResponseQueue, completion: @escaping ((_ data: AnyCodable?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateOrganisationWithRequestBuilder(organisationUuid: organisationUuid, createOrganisationRequest: createOrganisationRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update an organisation
+     - PUT /data/organisations/{organisationUuid}
+     - Update an existing organisation
+     - Bearer Token:
+       - type: http
+       - name: bearerAuth
+     - parameter organisationUuid: (path) Organisation uuid 
+     - parameter createOrganisationRequest: (body)  
+     - returns: RequestBuilder<AnyCodable> 
+     */
+    open class func updateOrganisationWithRequestBuilder(organisationUuid: String, createOrganisationRequest: CreateOrganisationRequest) -> RequestBuilder<AnyCodable> {
+        var localVariablePath = "/data/organisations/{organisationUuid}"
+        let organisationUuidPreEscape = "\(APIHelper.mapValueToPathItem(organisationUuid))"
+        let organisationUuidPostEscape = organisationUuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{organisationUuid}", with: organisationUuidPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cervinodata API ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createOrganisationRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<AnyCodable>.Type = Cervinodata API ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 }

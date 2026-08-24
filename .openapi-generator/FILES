@@ -19,6 +19,7 @@ Cervinodata API Client/Classes/OpenAPIs/Extensions.swift
 Cervinodata API Client/Classes/OpenAPIs/JSONDataEncoding.swift
 Cervinodata API Client/Classes/OpenAPIs/JSONEncodingHelper.swift
 Cervinodata API Client/Classes/OpenAPIs/Models.swift
+Cervinodata API Client/Classes/OpenAPIs/Models/CreateOrganisationRequest.swift
 Cervinodata API Client/Classes/OpenAPIs/OpenISO8601DateFormatter.swift
 Cervinodata API Client/Classes/OpenAPIs/SynchronizedDictionary.swift
 Cervinodata API Client/Classes/OpenAPIs/URLSessionImplementations.swift
@@ -32,6 +33,7 @@ docs/AnalyticsDataGoalsAPI.md
 docs/AnalyticsDataProductMetricsAPI.md
 docs/AnalyticsDataTransactionMetricsAPI.md
 docs/CampaignGroupAPI.md
+docs/CreateOrganisationRequest.md
 docs/GenericDataAPI.md
 docs/ProductDataAPI.md
 git_push.sh
